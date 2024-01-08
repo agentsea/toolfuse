@@ -20,7 +20,6 @@ class SeleniumBrowser(Tool):
             url (str): URL to open
         """
         self.driver.get(url)
-        self.take_screenshot()
 
     @action
     def click_element(self, selector: str, selector_type: str = "css_selector") -> None:
@@ -32,7 +31,6 @@ class SeleniumBrowser(Tool):
         """
         element = self.driver.find_element(selector_type, selector)
         element.click()
-        self.take_screenshot()
 
     @observation
     def get_html(self) -> str:
@@ -44,4 +42,5 @@ class SeleniumBrowser(Tool):
         return self.driver.page_source
 
     def close(self) -> None:
+        """Close the tool"""
         self.driver.quit()
