@@ -1,4 +1,4 @@
-# Agent Tool
+# Agent Tools
 
 A common protocol for AI agent tools
 
@@ -13,7 +13,7 @@ pip install agent-tool
 Let's define a simplified Selenium web browser tool
 
 ```python
-from agent_tool import Tool, action, observation
+from agent_tools import Tool, action, observation
 from selenium import webdriver
 
 
