@@ -44,7 +44,7 @@ def observation(method):
     return method
 
 
-class ToolV1(ABC):
+class Tool(ABC):
     """A tool is an agents means of interacting with the world"""
 
     def __init__(self) -> None:

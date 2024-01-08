@@ -64,7 +64,7 @@ class SeleniumBrowser(Tool):
 
 We mark the functions to be made available to the agent as `@action` if they mutate the environment, and `@observation` if they are read only.
 
-Now we can use this tool with openai function calling
+Now we can use this tool with an agent such as openai function calling
 
 ```python
 from openai import OpenAI
