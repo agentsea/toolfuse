@@ -1,4 +1,4 @@
-# agent-tools
+# Agent Tools
 
 A common protocol for AI agent tools
 
@@ -63,7 +63,7 @@ class SeleniumBrowser(Tool):
 
 ```
 
-We mark the functions to be made available to the agent as `@action` if they mutate the environemnt, and `@observation` if they are read only.
+We mark the functions to be made available to the agent as `@action` if they mutate the environment, and `@observation` if they are read only.
 
 Now we can use this tool with openai function calling
 
@@ -128,7 +128,7 @@ for tool in assistant_message["tool_calls"]:
     resp = browser.use(action, **args)
 ```
 
-Tools can be used locally or spun up on a server and used remotely.
+Tools can be used locally or spun up on a server and used remotely (In progress)
 
 ## Share (In progress)
 
