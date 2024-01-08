@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "agent-tools"
+version = "0.1.0"
+description = "A protocol for agent tools"
+authors = ["Patrick Barker <patrickbarkerco@gmail.com>"]
+license = "Apache 2.0"
+readme = "README.md"
+packages = [{include = "agent_tools"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+docstring-parser = "^0.15"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
