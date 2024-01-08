@@ -1,11 +1,10 @@
 [tool.poetry]
-name = "agent-tools"
+name = "agent-tool"
 version = "0.1.0"
-description = "A protocol for agent tools"
+description = "A protocol for AI agent tools"
 authors = ["Patrick Barker <patrickbarkerco@gmail.com>"]
 license = "Apache 2.0"
 readme = "README.md"
-packages = [{include = "agent_tools"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

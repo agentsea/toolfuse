@@ -1,11 +1,11 @@
-# Agent Tools
+# Agent Tool
 
 A common protocol for AI agent tools
 
 ## Installation
 
 ```
-pip install agent-tools
+pip install agent-tool
 ```
 
 ## Usage
@@ -13,7 +13,7 @@ pip install agent-tools
 Let's define a simplified Selenium web browser tool
 
 ```python
-from agent_tools import Tool, action, observation
+from agent_tool import Tool, action, observation
 from selenium import webdriver
 
 
@@ -132,6 +132,10 @@ Tools can be used locally or spun up on a server and used remotely (In progress)
 ## Share (In progress)
 
 Register a tool with the AgentSea hub so others can find and use it.
+
+```python
+pip install agentsea
+```
 
 Create a repo to publish
 
