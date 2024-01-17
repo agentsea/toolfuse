@@ -123,7 +123,7 @@ class Tool(ABC):
             List[Dict[str, Any]]: A list of function JSON schemas
         """
         out = []
-        for action in self._actions_list:
+        for action in self.actions():
             out.append(action.schema)
         return out
 
@@ -136,11 +136,11 @@ class Tool(ABC):
         Returns:
             Action: An action
         """
-        for action in self._actions_list:
+        for action in self.actions():
             if action.name == name:
                 return action
 
-        for observation in self._observations_list:
+        for observation in self.actions():
             if observation.name == name:
                 return observation
 
