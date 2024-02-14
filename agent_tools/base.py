@@ -127,7 +127,7 @@ class Tool(ABC):
             out.append(action.schema)
         return out
 
-    def find(self, name: str) -> Optional[Action]:
+    def find_action(self, name: str) -> Optional[Action]:
         """Find an action or observation
 
         Args:

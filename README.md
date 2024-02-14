@@ -122,7 +122,7 @@ Then to use this action
 
 ```python
 for tool in assistant_message["tool_calls"]:
-    action = browser.find(tool["function"]["name"])
+    action = browser.find_action(tool["function"]["name"])
     args = json.loads(tool["function"]["arguments"])
     resp = browser.use(action, **args)
 ```
