@@ -58,14 +58,12 @@ class Tool(ABC):
             if callable(attr) and hasattr(attr, "_is_action"):
                 wrapper = FunctionWrapper(attr)
                 description = self._parse_docstring(attr)
-                action = Action(attr_name, wrapper, wrapper.schema, description)
+                action = Action(attr_name, attr, wrapper.schema, description)
                 self._actions_list.append(action)
             elif callable(attr) and hasattr(attr, "_is_observation"):
                 wrapper = FunctionWrapper(attr)
                 description = self._parse_docstring(attr)
-                observation = Observation(
-                    attr_name, wrapper, wrapper.schema, description
-                )
+                observation = Observation(attr_name, attr, wrapper.schema, description)
                 self._observations_list.append(observation)
 
     def _parse_docstring(self, method: Callable) -> str:

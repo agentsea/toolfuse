@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "agent-tool"
-version = "0.1.5"
+version = "0.1.6"
 description = "A protocol for AI agent tools"
 authors = ["Patrick Barker <patrickbarkerco@gmail.com>"]
 license = "Apache 2.0"
