@@ -106,8 +106,3 @@ def test_function_that_is_a_generator():
     gen = wrapper({'a': 'test', 'b': 123})
     assert next(gen) == 'test'
     assert next(gen) == 123
-
-if __name__ == "__main__":
-    test_parse_arguments_with_default()
-    test_call_with_default()
-
