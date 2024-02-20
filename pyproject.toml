@@ -10,7 +10,18 @@ packages = [{include = "agent_tools"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 docstring-parser = "^0.15"
+urllib3 = "^1.26.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+]
