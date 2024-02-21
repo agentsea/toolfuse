@@ -15,6 +15,11 @@ urllib3 = "^1.26.0"
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
 
+[tool.poetry.group.dev.dependencies]
+sphinx = "^7.2.6"
+sphinx-rtd-theme = "^2.0.0"
+recommonmark = "^0.7.1"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
@@ -25,3 +30,6 @@ addopts = "-ra -q"
 testpaths = [
     "tests",
 ]
+
+[tool.poetry.scripts]
+build-docs = "scripts.build_docs:main"
