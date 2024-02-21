@@ -138,7 +138,7 @@ class Tool(ABC):
             if action.name == name:
                 return action
 
-        for observation in self.actions():
+        for observation in self.observations():
             if observation.name == name:
                 return observation
 

@@ -39,6 +39,6 @@ class DictParser(ArgSchemaParser[Dict[str, T]]):
         if not isinstance(value, dict):
             raise BrokenSchemaError(value, self.argument_schema)
         return {
-            k: self.parse_rec(get_args(self.argtype)[1]).parse_value(v)
+            self.parse_rec(get_args(self.argtype)[0]).parse_value(k): self.parse_rec(get_args(self.argtype)[1]).parse_value(v)
             for k, v in value.items()
         }
