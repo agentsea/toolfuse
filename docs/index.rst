@@ -1,12 +1,9 @@
-Welcome to Agent Tools's documentation!
-========================================
+Agent Tools
+===========
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
-   Quick start <user>
-   API reference <api>
-
-Here you'll learn how to use Agent Tools to build your own agents.
+   User Documentation <user/index>
+   API Reference <api/index>
 
