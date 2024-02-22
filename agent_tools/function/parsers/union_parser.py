@@ -1,4 +1,5 @@
 """Parser for union types"""
+
 from __future__ import annotations
 import contextlib
 

@@ -1,4 +1,5 @@
 """Parser for dict types"""
+
 from __future__ import annotations
 from typing import Any, Dict, TYPE_CHECKING, Type, TypeVar, get_args, get_origin
 
@@ -39,6 +40,8 @@ class DictParser(ArgSchemaParser[Dict[str, T]]):
         if not isinstance(value, dict):
             raise BrokenSchemaError(value, self.argument_schema)
         return {
-            self.parse_rec(get_args(self.argtype)[0]).parse_value(k): self.parse_rec(get_args(self.argtype)[1]).parse_value(v)
+            self.parse_rec(get_args(self.argtype)[0])
+            .parse_value(k): self.parse_rec(get_args(self.argtype)[1])
+            .parse_value(v)
             for k, v in value.items()
         }

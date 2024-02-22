@@ -1,4 +1,5 @@
 """Parser for list types"""
+
 from __future__ import annotations
 from typing import Any, List, TYPE_CHECKING, Type, TypeVar, get_args, get_origin
 
