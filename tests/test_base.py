@@ -88,12 +88,22 @@ def test_observations_method(tool):
     assert isinstance(observations[0], Observation)
 
 
-def test_use_method(tool):
+def test_use_action(tool):
     result = tool.use(tool._actions_list[0])
     assert result == "action_performed"
 
 
-def test_observe_method(tool):
+def test_use_observation(tool):
+    result = tool.use(tool._observations_list[0])
+    assert result == "observation_made"
+
+
+def test_observe_action(tool):
+    with pytest.raises(ValueError):
+        tool.observe(tool._actions_list[0])
+
+
+def test_observe_observation(tool):
     result = tool.observe(tool._observations_list[0])
     assert result == "observation_made"
 
@@ -101,6 +111,7 @@ def test_observe_method(tool):
 def test_json_schema_method(tool):
     schemas = tool.json_schema()
     assert isinstance(schemas, list)
+    assert len(schemas) == 2
 
 
 def test_find_action(tool):

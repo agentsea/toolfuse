@@ -59,7 +59,7 @@ class Action:
         return self.method(*args, **kwargs)
 
 
-class Observation:
+class Observation(Action):
     """
     Represents an observation that an agent can make in an environment.
 
@@ -258,6 +258,10 @@ class Tool(ABC):
         Returns:
             Any: The result of the observation execution, which can vary depending on the observation.
         """
+        if not isinstance(observation, Observation):
+            raise ValueError(
+                "Actions are not observable. Use the 'use' method to perform an action."
+            )
         return observation(*args, **kwargs)
 
     def json_schema(self) -> List[Dict[str, Any]]:
@@ -273,6 +277,8 @@ class Tool(ABC):
         out = []
         for action in self.actions():
             out.append(action.schema)
+        for observation in self.observations():
+            out.append(observation.schema)
         return out
 
     def find_action(self, name: str) -> Optional[Action]:
