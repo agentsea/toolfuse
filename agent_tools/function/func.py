@@ -1,4 +1,5 @@
 """Wrap a function for jsonschema io."""
+
 from __future__ import annotations
 from dataclasses import dataclass
 import inspect

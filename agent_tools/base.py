@@ -19,7 +19,7 @@ class Action:
         name (str): The name of the action. This is typically a unique identifier.
         method (Callable): The callable method that is executed when the action is taken.
         schema (Dict): A dictionary that defines the structure and types of the parameters
-                       that the action expects. 
+                       that the action expects.
         description (str): A human-readable description of what the action does and its
                            purpose within the context of the agent's environment.
 
@@ -57,6 +57,7 @@ class Action:
             The result of the action method execution.
         """
         return self.method(*args, **kwargs)
+
 
 class Observation:
     """
@@ -114,13 +115,14 @@ class Observation:
         """
         return self.method(*args, **kwargs)
 
+
 def action(method: Callable) -> Callable:
     """
     A decorator that marks a method as an action within the Tool.
 
     This decorator adds a special attribute to the method indicating that it
     should be treated as an action. Actions are potential operations that an
-    agent can perform in its environment. 
+    agent can perform in its environment.
 
     Args:
         method (Callable): The method to be marked as an action.
@@ -130,6 +132,7 @@ def action(method: Callable) -> Callable:
     """
     method._is_action = True
     return method
+
 
 def observation(method: Callable) -> Callable:
     """
@@ -149,10 +152,11 @@ def observation(method: Callable) -> Callable:
     method._is_observation = True
     return method
 
+
 class Tool(ABC):
     """
     A Tool is an abstract base class that defines the interface for agent tools.
-    
+
     Agent tools are the primary means by which an agent interacts with its environment.
     They encapsulate actions that an agent can perform and observations that an agent
     can make to understand the state of the environment. This class provides the necessary
@@ -171,7 +175,7 @@ class Tool(ABC):
     def _register_methods(self) -> None:
         """
         Scans the Tool instance for methods marked as actions or observations and registers them.
-        
+
         This method looks for callable attributes of the instance that have either the '_is_action'
         or '_is_observation' attribute set to True, indicating that they should be treated as actions
         or observations, respectively. It then creates Action or Observation instances for these methods

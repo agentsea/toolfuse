@@ -1,4 +1,5 @@
 """Parser for atomic json types"""
+
 from __future__ import annotations
 from abc import abstractmethod
 from typing import Any, TYPE_CHECKING, Type, TypeVar

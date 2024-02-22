@@ -1,4 +1,5 @@
 """Parser for string types"""
+
 from .atomic_type_parser import AtomicParser
 
 
