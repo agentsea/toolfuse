@@ -3,6 +3,8 @@ from typing import List, Callable, Any, Dict, Optional
 from inspect import getdoc
 import re
 
+from pydantic import BaseModel
+
 from .function import FunctionWrapper
 
 
@@ -310,3 +312,11 @@ class Tool(ABC):
         when the tool is no longer needed.
         """
         pass
+
+    def context(self) -> str:
+        """LLM context fork the tool
+
+        Returns:
+            str: LLM context for the tool
+        """
+        return self.__doc__
