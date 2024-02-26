@@ -5,29 +5,29 @@
     <img src="https://project-logo.png" alt="Logo" width="80">
   </a> -->
 
-  <h1 align="center">AgentTools</h1>
+  <h1 align="center">OpenTool</h1>
 
   <p align="center">
     A common protocol for AI agent tools
     <br />
-    <a href="https://github.com/agentsea/agent-tools"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/agentsea/opentool"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/agentsea/agent-tools">View Demo</a>
+    <a href="https://github.com/agentsea/opentool">View Demo</a>
     ·
-    <a href="https://github.com/agentsea/agent-tools/issues">Report Bug</a>
+    <a href="https://github.com/agentsea/opentool/issues">Report Bug</a>
     ·
-    <a href="https://github.com/agentsea/agent-tools/issues">Request Feature</a>
+    <a href="https://github.com/agentsea/opentool/issues">Request Feature</a>
   </p>
   <br>
 </p>
 
-AgentTools provides a simple common potocol for AI agent tools, allowing use accross different model types and frameworks.
+OpenTool provides a simple common potocol for AI agent tools, allowing use accross different model types and frameworks.
 
 ## Installation
 
 ```
-pip install agent-tool
+pip install open-tool
 ```
 
 ## Usage
@@ -35,7 +35,7 @@ pip install agent-tool
 Let's define a simplified Selenium web browser tool
 
 ```python
-from agent_tools import Tool, action, observation
+from opentool import Tool, action, observation
 from selenium import webdriver
 
 
