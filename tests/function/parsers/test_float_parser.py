@@ -1,6 +1,6 @@
 import pytest
-from agent_tools.function.parsers.float_parser import FloatParser
-from agent_tools.function.func import BrokenSchemaError
+from opentool.function.parsers.float_parser import FloatParser
+from opentool.function.func import BrokenSchemaError
 
 
 @pytest.fixture

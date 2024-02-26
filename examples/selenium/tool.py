@@ -1,4 +1,4 @@
-from agent_tools import Tool, action, observation
+from opentool import Tool, action, observation
 from selenium import webdriver
 
 

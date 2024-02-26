@@ -1,6 +1,6 @@
 import pytest
-from agent_tools.function.parsers.int_parser import IntParser
-from agent_tools.function.func import BrokenSchemaError
+from opentool.function.parsers.int_parser import IntParser
+from opentool.function.func import BrokenSchemaError
 
 
 @pytest.fixture

@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "agent-tool"
+name = "opentool-ai"
 version = "0.1.7"
 description = "A protocol for AI agent tools"
 authors = ["Patrick Barker <patrickbarkerco@gmail.com>"]
 license = "Apache 2.0"
 readme = "README.md"
-packages = [{include = "agent_tools"}]
+packages = [{include = "opentool"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

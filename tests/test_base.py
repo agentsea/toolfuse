@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import Mock
-from agent_tools.base import Action, Observation, Tool, action, observation
+from opentool.base import Action, Observation, Tool, action, observation
 
 
 def test_action_initialization_and_call():
