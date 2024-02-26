@@ -117,7 +117,7 @@ Then to use this action
 
 ```python
 for tool in assistant_message["tool_calls"]:
-    action = browser.find_action(tool["function"]["name"])
+    action = weatherlogger.find_action(tool["function"]["name"])
     args = json.loads(tool["function"]["arguments"])
     resp = weatherlogger.use(action, **args)
 ```
