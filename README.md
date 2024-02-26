@@ -75,7 +75,7 @@ from openai import OpenAI
 client = OpenAI()
 
 weatherlogger = WeatherLogger()
-schemas = browser.json_schema()
+schemas = weatherlogger.json_schema()
 
 messages = []
 messages.append({"role": "system", "content": "Don't make assumptions about what values to plug into functions. Ask for clarification if a user request is ambiguous."})
@@ -131,3 +131,4 @@ for tool in assistant_message["tool_calls"]:
 - [ ] Integrate with langchain
 - [ ] Integrate with babyagi
 - [ ] Integrate with autogen
+- [ ] Integrate with llamaindex
