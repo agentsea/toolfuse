@@ -42,15 +42,11 @@ from selenium import webdriver
 class WeatherLogger(Tool):
   """A simple weather logger."""
 
-    def __init__(self):
-        super().__init__()
-        self.log_file = "weather.txt"
-
     @action
     def log(self, message: str) -> None:
         """Logs a message to the log file."""
 
-        with open(self.log_file, "a") as file:
+        with open("weather.txt", "a") as file:
             file.write("***\n" + message + "\n")
 
     @observation
