@@ -67,7 +67,7 @@ We mark the functions to be made available to the agent as
 
 ### Function Calling
 
-Now we can use this tool with an agent such as openai function calling
+Use a tool with OpenAI function calling
 
 ```python
 from openai import OpenAI
@@ -121,6 +121,10 @@ for tool in assistant_message["tool_calls"]:
     args = json.loads(tool["function"]["arguments"])
     resp = weatherlogger.use(action, **args)
 ```
+
+## Available Tools
+
+:computer: [AgentDesk](https://github.com/agentsea/agentdesk) provides AI agents with a full GUI desktop.
 
 ## Roadmap
 
