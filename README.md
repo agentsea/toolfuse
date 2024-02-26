@@ -1,6 +1,28 @@
-# Agent Tools
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <!-- <a href="https://github.com/agentsea/skillpacks">
+    <img src="https://project-logo.png" alt="Logo" width="80">
+  </a> -->
 
-A common protocol for AI agent tools
+  <h1 align="center">AgentTools</h1>
+
+  <p align="center">
+    A common protocol for AI agent tools
+    <br />
+    <a href="https://github.com/agentsea/agent-tools"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/agentsea/agent-tools">View Demo</a>
+    ·
+    <a href="https://github.com/agentsea/agent-tools/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/agentsea/agent-tools/issues">Request Feature</a>
+  </p>
+  <br>
+</p>
+
+AgentTools provides a simple common potocol for AI agent tools, allowing use accross different model types and frameworks.
 
 ## Installation
 
