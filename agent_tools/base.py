@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 from typing import List, Callable, Any, Dict, Optional
 from inspect import getdoc
 import re
@@ -301,12 +301,27 @@ class Tool(ABC):
             if observation.name == name:
                 return observation
 
-    @abstractmethod
     def close(self) -> None:
         """
-        An abstract method that should be implemented by subclasses to handle the closing of the tool.
+        A method that should be implemented by subclasses to handle the closing of the tool.
 
         This method is intended to provide a way to release any resources or perform any cleanup necessary
         when the tool is no longer needed.
         """
-        pass
+        return
+
+    def context(self) -> str:
+        """LLM context fork the tool
+
+        Returns:
+            str: LLM context for the tool
+        """
+        return self.__doc__
+
+    def name(self) -> str:
+        """Tool name
+
+        Returns:
+            str: Tool name
+        """
+        return self.__class__.__name__
