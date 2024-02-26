@@ -1,6 +1,6 @@
 import pytest
-from agent_tools.function.parsers.bool_parser import BoolParser
-from agent_tools.function.func import BrokenSchemaError
+from opentool.function.parsers.bool_parser import BoolParser
+from opentool.function.func import BrokenSchemaError
 
 
 @pytest.fixture

@@ -1,6 +1,6 @@
 import pytest
-from agent_tools.function.parsers.str_parser import StringParser
-from agent_tools.function.func import BrokenSchemaError
+from opentool.function.parsers.str_parser import StringParser
+from opentool.function.func import BrokenSchemaError
 
 
 @pytest.fixture

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "open-tool"
+name = "opentool-ai"
 version = "0.1.7"
 description = "A protocol for AI agent tools"
 authors = ["Patrick Barker <patrickbarkerco@gmail.com>"]

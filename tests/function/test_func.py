@@ -1,7 +1,7 @@
 import pytest
 import inspect
 from collections import OrderedDict
-from agent_tools.function.func import (
+from opentool.function.func import (
     FunctionWrapper,
     WrapperConfig,
     ArgSchemaParser,

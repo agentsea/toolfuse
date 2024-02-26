@@ -27,7 +27,7 @@ OpenTool provides a simple common potocol for AI agent tools, allowing use accro
 ## Installation
 
 ```
-pip install open-tool
+pip install opentool-ai
 ```
 
 ## Usage

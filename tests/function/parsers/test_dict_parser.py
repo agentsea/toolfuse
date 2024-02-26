@@ -1,8 +1,8 @@
 import pytest
-from agent_tools.function.parsers.dict_parser import DictParser
-from agent_tools.function.parsers.int_parser import IntParser
-from agent_tools.function.parsers.str_parser import StringParser
-from agent_tools.function.func import BrokenSchemaError
+from opentool.function.parsers.dict_parser import DictParser
+from opentool.function.parsers.int_parser import IntParser
+from opentool.function.parsers.str_parser import StringParser
+from opentool.function.func import BrokenSchemaError
 
 
 @pytest.fixture

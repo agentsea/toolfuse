@@ -1,8 +1,8 @@
 import pytest
 from enum import Enum
-from agent_tools.function.parsers.enum_parser import EnumParser
-from agent_tools.function.parsers.int_parser import IntParser
-from agent_tools.function.func import BrokenSchemaError
+from opentool.function.parsers.enum_parser import EnumParser
+from opentool.function.parsers.int_parser import IntParser
+from opentool.function.func import BrokenSchemaError
 
 
 class Color(Enum):
