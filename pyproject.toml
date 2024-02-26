@@ -13,6 +13,8 @@ docstring-parser = "^0.15"
 urllib3 = "^1.26.0"
 python-dotenv = "^1.0.1"
 openai = "^1.12.0"
+agentscript = "^0.1.1"
+deepthread = "^0.1.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

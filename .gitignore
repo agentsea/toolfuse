@@ -1,4 +1,5 @@
 examples/weather/weather.txt
+examples/weather/data/threads.db
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
