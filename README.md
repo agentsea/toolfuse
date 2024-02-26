@@ -22,7 +22,7 @@
   <br>
 </p>
 
-OpenTool provides a simple common potocol for AI agent tools, allowing use accross different model types and frameworks.
+OpenTool provides a common potocol for AI agent tools, use them with your favorite agent framework or model.
 
 ## Installation
 
@@ -124,7 +124,7 @@ for tool in assistant_message["tool_calls"]:
 
 ## Available Tools
 
-:computer: [AgentDesk](https://github.com/agentsea/agentdesk) provides AI agents with a full GUI desktop.
+:computer: [AgentDesk](https://github.com/agentsea/agentdesk) provides AI agents with a full GUI desktop locally or in the cloud.
 
 ## Roadmap
 
