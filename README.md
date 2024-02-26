@@ -32,59 +32,44 @@ pip install opentool-ai
 
 ## Usage
 
-Let's define a simplified Selenium web browser tool
+Let's define a simple weather logger tool
 
 ```python
 from opentool import Tool, action, observation
 from selenium import webdriver
 
 
-class SeleniumBrowser(Tool):
-    """Selenium browser as a tool"""
+class WeatherLogger(Tool):
+  """A simple weather logger."""
 
-    def __init__(self, headless: bool = True) -> None:
+    def __init__(self):
         super().__init__()
-        options = webdriver.ChromeOptions()
-        if headless:
-            options.add_argument("--headless")
-        self.driver = webdriver.Chrome(options=options)
+        self.log_file = "weather.txt"
 
     @action
-    def open_url(self, url: str) -> None:
-        """Open a URL in the browser
+    def log(self, message: str) -> None:
+        """Logs a message to the log file."""
 
-        Args:
-            url (str): URL to open
-        """
-        self.driver.get(url)
-
-    @action
-    def click_element(self, selector: str, selector_type: str = "css_selector") -> None:
-        """Click an element identified by a CSS selector
-
-        Args:
-            selector (str): CSS selector
-            selector_type (str, optional): Selector type. Defaults to "css_selector".
-        """
-        element = self.driver.find_element(selector_type, selector)
-        element.click()
+        with open(self.log_file, "a") as file:
+            file.write("***\n" + message + "\n")
 
     @observation
-    def get_html(self) -> str:
-        """Get the entire HTML of the current page.
+    def weather(self, location: str) -> str:
+        """Checks the current weather from the internet using wttr.in."""
 
-        Returns:
-            str: Page HTML
-        """
-        return self.driver.page_source
-
-    def close(self) -> None:
-        """Close the tool"""
-        self.driver.quit()
+        weather_api_url = f"http://wttr.in/{location}?format=%l:+%C+%t"
+        response = requests.get(weather_api_url)
+        response.raise_for_status()
+        return response.text
 
 ```
 
-We mark the functions to be made available to the agent as `@action` if they mutate the environment, and `@observation` if they are read only.
+We mark the functions to be made available to the agent as
+
+- `@action` if they mutate the environment
+- `@observation` if they are read only.
+
+### Function Calling
 
 Now we can use this tool with an agent such as openai function calling
 
@@ -93,12 +78,12 @@ from openai import OpenAI
 
 client = OpenAI()
 
-browser = SeleniumBrowser()
+weatherlogger = WeatherLogger()
 schemas = browser.json_schema()
 
 messages = []
 messages.append({"role": "system", "content": "Don't make assumptions about what values to plug into functions. Ask for clarification if a user request is ambiguous."})
-messages.append({"role": "user", "content": "Get the HTML for the front page of wikipedia"})
+messages.append({"role": "user", "content": "What is the weather in Paris?"})
 
 headers = {
     "Content-Type": "application/json",
@@ -124,16 +109,8 @@ assistant_message
       "id": "call_RYXaDjxpUCfWmpXU7BZEYVqS",
       "type": "function",
       "function": {
-        "name": "open_url",
-        "arguments": "{\n  \"url\": \"https://wikipedia.org\"}"
-      }
-    },
-    {
-      "id": "call_TJIWlknwdoinfWEMFNss",
-      "type": "function",
-      "function": {
-        "name": "get_html",
-        "arguments": ""
+        "name": "weather",
+        "arguments": "{\n  \"location\": \"Paris\"}"
       }
     }
   ]
@@ -146,33 +123,11 @@ Then to use this action
 for tool in assistant_message["tool_calls"]:
     action = browser.find_action(tool["function"]["name"])
     args = json.loads(tool["function"]["arguments"])
-    resp = browser.use(action, **args)
-```
-
-Tools can be used locally or spun up on a server and used remotely (In progress)
-
-## Share (In progress)
-
-Register a tool with the AgentSea hub so others can find and use it.
-
-```python
-pip install agentsea
-```
-
-Create a repo to publish
-
-```
-agentsea create tool
-```
-
-Add your tool to the `tool.py` in the repo, fill in the `README.md` and add your dependencies using Poetry
-
-Publish to the hub
-
-```
-agentsea publish .
+    resp = weatherlogger.use(action, **args)
 ```
 
 ## Roadmap
 
-- Integrate with langchain, babyagi, autogpt, etc
+- [ ] Integrate with langchain
+- [ ] Integrate with babyagi
+- [ ] Integrate with autogen
