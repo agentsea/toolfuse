@@ -325,3 +325,15 @@ class Tool(ABC):
             str: Tool name
         """
         return self.__class__.__name__
+
+    @action
+    def result(self, value: str) -> str:
+        """Return a result to the user
+
+        Args:
+            value (str): Value to return
+
+        Returns:
+            str: Value returned
+        """
+        return value
