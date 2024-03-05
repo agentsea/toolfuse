@@ -264,12 +264,15 @@ class Tool(ABC):
             )
         return observation(*args, **kwargs)
 
-    def json_schema(self) -> List[Dict[str, Any]]:
+    def json_schema(self, actions_only: bool = False) -> List[Dict[str, Any]]:
         """
         Returns a list of JSON schemas representing the tool's actions.
 
         Each schema provides a structured description of an action's interface, including its name,
         expected arguments, and other metadata.
+
+        Args:
+            actions_only (bool, optional): If True, only the action schemas will be returned. Defaults to False.
 
         Returns:
             List[Dict[str, Any]]: A list of dictionaries, each representing the JSON schema of an action.
@@ -277,8 +280,9 @@ class Tool(ABC):
         out = []
         for action in self.actions():
             out.append(action.schema)
-        for observation in self.observations():
-            out.append(observation.schema)
+        if not actions_only:
+            for observation in self.observations():
+                out.append(observation.schema)
         return out
 
     def find_action(self, name: str) -> Optional[Action]:
