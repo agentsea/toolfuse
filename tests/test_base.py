@@ -72,14 +72,14 @@ def tool():
 
 
 def test_register_methods(tool):
-    assert len(tool._actions_list) == 1
+    assert len(tool._actions_list) == 2
     assert len(tool._observations_list) == 1
 
 
 def test_actions_method(tool):
     actions = tool.actions()
-    assert len(actions) == 1
-    assert isinstance(actions[0], Action)
+    assert len(actions) == 2
+    assert all(isinstance(action, Action) for action in actions)
 
 
 def test_observations_method(tool):
@@ -110,8 +110,8 @@ def test_observe_observation(tool):
 
 def test_json_schema_method(tool):
     schemas = tool.json_schema()
-    assert isinstance(schemas, list)
-    assert len(schemas) == 2
+    assert len(schemas) == 3
+    assert all(isinstance(schema, dict) for schema in schemas)
 
 
 def test_find_action(tool):

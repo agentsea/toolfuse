@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "opentool-ai"
-version = "0.1.7"
+version = "0.1.8"
 description = "A protocol for AI agent tools"
 authors = ["Patrick Barker <patrickbarkerco@gmail.com>"]
 license = "Apache 2.0"
