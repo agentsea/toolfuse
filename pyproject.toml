@@ -10,10 +10,6 @@ packages = [{include = "opentool"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 docstring-parser = "^0.15"
-urllib3 = "^1.26.0"
-
-[tool.poetry.dev-dependencies]
-pytest = "^6.2.5"
 
 [tool.poetry.group.dev.dependencies]
 sphinx = "^7.2.6"
@@ -21,6 +17,7 @@ sphinx-rtd-theme = "^2.0.0"
 recommonmark = "^0.7.1"
 flake8 = "^7.0.0"
 black = "^24.2.0"
+pytest = "8.1.0"
 
 [build-system]
 requires = ["poetry-core"]
