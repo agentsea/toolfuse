@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "opentool-ai"
-version = "0.1.8"
+version = "0.1.9"
 description = "A protocol for AI agent tools"
 authors = ["Patrick Barker <patrickbarkerco@gmail.com>"]
 license = "Apache 2.0"
@@ -17,7 +17,7 @@ sphinx-rtd-theme = "^2.0.0"
 recommonmark = "^0.7.1"
 flake8 = "^7.0.0"
 black = "^24.2.0"
-pytest = "8.1.0"
+pytest = "^8.1.1"
 
 [build-system]
 requires = ["poetry-core"]
