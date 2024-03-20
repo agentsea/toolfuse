@@ -52,9 +52,10 @@ def test_tool_from_object():
     assert isinstance(
         MyObjectTool, Tool
     ), "The returned instance should be of type Tool"
-    assert hasattr(
-        MyObjectTool, "my_method"
-    ), "The tool should have the 'my_method' action"
+    print("actions: ", MyObjectTool.actions())
+    actions = MyObjectTool.actions()
+    assert len(actions) == 1
+    assert actions[0].name == "my_method"
     action_result = MyObjectTool.use(MyObjectTool.actions()[0], 5)
     assert (
         action_result == 10
