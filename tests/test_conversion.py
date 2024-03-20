@@ -7,11 +7,11 @@ from opentool import (
 
 
 class MyClass:
-    def my_method(self, x):
+    def my_method(self, x: int):
         return x * 2
 
 
-def my_function(x):
+def my_function(x: int):
     return x + 2
 
 
