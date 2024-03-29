@@ -27,7 +27,7 @@ ToolFuse provides a common potocol for AI agent tools, use them with your favori
 ## Installation
 
 ```
-pip install toolfuse-ai
+pip install toolfuse
 ```
 
 ## Usage
