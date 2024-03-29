@@ -1,7 +1,7 @@
 import pytest
 import inspect
 from collections import OrderedDict
-from opentool.function.func import (
+from toolfuse.function.func import (
     FunctionWrapper,
     WrapperConfig,
     ArgSchemaParser,

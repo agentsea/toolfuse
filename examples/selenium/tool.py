@@ -1,4 +1,4 @@
-from opentool import Tool, action, observation
+from toolfuse import Tool, action, observation
 from selenium import webdriver
 
 

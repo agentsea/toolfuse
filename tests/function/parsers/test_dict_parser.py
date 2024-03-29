@@ -1,8 +1,8 @@
 import pytest
-from opentool.function.parsers.dict_parser import DictParser
-from opentool.function.parsers.int_parser import IntParser
-from opentool.function.parsers.str_parser import StringParser
-from opentool.function.func import BrokenSchemaError
+from toolfuse.function.parsers.dict_parser import DictParser
+from toolfuse.function.parsers.int_parser import IntParser
+from toolfuse.function.parsers.str_parser import StringParser
+from toolfuse.function.func import BrokenSchemaError
 
 
 @pytest.fixture

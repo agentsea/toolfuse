@@ -1,9 +1,9 @@
 import pytest
 from typing import Union
-from opentool.function.parsers.union_parser import UnionParser
-from opentool.function.parsers.int_parser import IntParser
-from opentool.function.parsers.str_parser import StringParser
-from opentool.function.func import BrokenSchemaError
+from toolfuse.function.parsers.union_parser import UnionParser
+from toolfuse.function.parsers.int_parser import IntParser
+from toolfuse.function.parsers.str_parser import StringParser
+from toolfuse.function.func import BrokenSchemaError
 
 
 @pytest.fixture

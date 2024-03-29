@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "opentool-ai"
-version = "0.1.9"
-description = "A protocol for AI agent tools"
+name = "toolfuse"
+version = "0.1.11"
+description = "Tools for AI agents"
 authors = ["Patrick Barker <patrickbarkerco@gmail.com>"]
 license = "Apache 2.0"
 readme = "README.md"
-packages = [{include = "opentool"}]
+packages = [{include = "toolfuse"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

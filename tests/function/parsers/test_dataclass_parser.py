@@ -1,10 +1,10 @@
 import pytest
 from dataclasses import dataclass
-from opentool.function.parsers.dataclass_parser import DataclassParser
-from opentool.function.parsers.int_parser import IntParser
-from opentool.function.parsers.str_parser import StringParser
-from opentool.function.parsers.bool_parser import BoolParser
-from opentool.function.func import BrokenSchemaError
+from toolfuse.function.parsers.dataclass_parser import DataclassParser
+from toolfuse.function.parsers.int_parser import IntParser
+from toolfuse.function.parsers.str_parser import StringParser
+from toolfuse.function.parsers.bool_parser import BoolParser
+from toolfuse.function.func import BrokenSchemaError
 
 
 @dataclass

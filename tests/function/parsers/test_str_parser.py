@@ -1,6 +1,6 @@
 import pytest
-from opentool.function.parsers.str_parser import StringParser
-from opentool.function.func import BrokenSchemaError
+from toolfuse.function.parsers.str_parser import StringParser
+from toolfuse.function.func import BrokenSchemaError
 
 
 @pytest.fixture

@@ -1,6 +1,6 @@
 import pytest
-from opentool.function.parsers.none_parser import NoneParser
-from opentool.function.func import BrokenSchemaError
+from toolfuse.function.parsers.none_parser import NoneParser
+from toolfuse.function.func import BrokenSchemaError
 
 
 @pytest.fixture
