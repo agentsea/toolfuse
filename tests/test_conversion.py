@@ -1,5 +1,5 @@
 import pytest
-from opentool import (
+from toolfuse import (
     tool,
     Tool,
     Action,

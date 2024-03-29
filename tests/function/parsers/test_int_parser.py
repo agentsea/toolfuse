@@ -1,6 +1,6 @@
 import pytest
-from opentool.function.parsers.int_parser import IntParser
-from opentool.function.func import BrokenSchemaError
+from toolfuse.function.parsers.int_parser import IntParser
+from toolfuse.function.func import BrokenSchemaError
 
 
 @pytest.fixture

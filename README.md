@@ -5,29 +5,29 @@
     <img src="https://project-logo.png" alt="Logo" width="80">
   </a> -->
 
-  <h1 align="center">OpenTool</h1>
+  <h1 align="center">ToolFuse</h1>
 
   <p align="center">
     A common protocol for AI agent tools
     <br />
-    <a href="https://github.com/agentsea/opentool"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/agentsea/toolfuse"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/agentsea/opentool">View Demo</a>
+    <a href="https://github.com/agentsea/toolfuse">View Demo</a>
     ·
-    <a href="https://github.com/agentsea/opentool/issues">Report Bug</a>
+    <a href="https://github.com/agentsea/toolfuse/issues">Report Bug</a>
     ·
-    <a href="https://github.com/agentsea/opentool/issues">Request Feature</a>
+    <a href="https://github.com/agentsea/toolfuse/issues">Request Feature</a>
   </p>
   <br>
 </p>
 
-OpenTool provides a common potocol for AI agent tools, use them with your favorite agent framework or model.
+ToolFuse provides a common potocol for AI agent tools, use them with your favorite agent framework or model.
 
 ## Installation
 
 ```
-pip install opentool-ai
+pip install toolfuse-ai
 ```
 
 ## Usage
@@ -35,7 +35,7 @@ pip install opentool-ai
 Let's define a simple weather logger tool
 
 ```python
-from opentool import Tool, action, observation
+from toolfuse import Tool, action, observation
 from selenium import webdriver
 
 

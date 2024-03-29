@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import Mock
-from opentool.base import Action, Observation, Tool, action, observation
+from toolfuse.base import Action, Observation, Tool, action, observation
 
 
 def test_action_initialization_and_call():
