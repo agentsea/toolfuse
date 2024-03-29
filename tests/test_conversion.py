@@ -35,6 +35,7 @@ def test_tool_from_class():
 
 def test_tool_from_function():
     MyFunctionTool = tool(my_function)
+    assert MyFunctionTool.name() == "my_function_tool"
     assert issubclass(
         MyFunctionTool, Tool
     ), "The returned type should be a subclass of Tool"

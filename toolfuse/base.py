@@ -326,13 +326,14 @@ class Tool(ABC):
         """
         return self.__doc__
 
-    def name(self) -> str:
+    @classmethod
+    def name(cls) -> str:
         """Tool name
 
         Returns:
             str: Tool name
         """
-        return self.__class__.__name__
+        return cls.__name__
 
 
 def tool_from_cls(cls: Type[T]) -> Type[Tool]:
