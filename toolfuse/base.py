@@ -428,7 +428,7 @@ def tool_from_function(function: Callable) -> Type[Tool]:
             # Add the Action to the tool's actions list
             self._actions_list.append(action)
 
-    FunctionTool.__name__ = f"{function.__name__}Tool"
+    FunctionTool.__name__ = f"{function.__name__}_tool"
     return FunctionTool
 
 
