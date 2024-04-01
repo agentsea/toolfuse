@@ -1,5 +1,5 @@
-Agent Tools
-===========
+ToolFuse Library Reference
+=============================
 
 .. toctree::
    :maxdepth: 2
