@@ -4,6 +4,10 @@ Agent Tools
 .. toctree::
    :maxdepth: 2
 
-   User Documentation <user/index>
-   API Reference <api/index>
+   API Reference <api>
 
+.. toctree::
+   :maxdepth: 1
+   :caption: -------
+
+   Back to Agentsea Documentation <https://agentsea.github.io>

@@ -10,7 +10,7 @@ import sys
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = "Agent Tools"
+project = "ToolFuse"
 copyright = "2024, Kentauros AI"
 author = "Kentauros AI"
 
@@ -37,4 +37,4 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # -- Source files location ----------------------------------------------------
 
-sys.path.insert(0, os.path.abspath("../agent_tools"))
+sys.path.insert(0, os.path.abspath("../toolfuse"))
