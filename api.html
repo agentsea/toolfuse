@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Reference &mdash; ToolFuse  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Agent Tools" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ToolFuse
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#tool">Tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#toolfuse.Tool"><code class="docutils literal notranslate"><span class="pre">Tool</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.actions"><code class="docutils literal notranslate"><span class="pre">Tool.actions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.close"><code class="docutils literal notranslate"><span class="pre">Tool.close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.context"><code class="docutils literal notranslate"><span class="pre">Tool.context()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.find_action"><code class="docutils literal notranslate"><span class="pre">Tool.find_action()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.json_schema"><code class="docutils literal notranslate"><span class="pre">Tool.json_schema()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.name"><code class="docutils literal notranslate"><span class="pre">Tool.name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.observations"><code class="docutils literal notranslate"><span class="pre">Tool.observations()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.observe"><code class="docutils literal notranslate"><span class="pre">Tool.observe()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.use"><code class="docutils literal notranslate"><span class="pre">Tool.use()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#decorators">Decorators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#toolfuse.action"><code class="docutils literal notranslate"><span class="pre">action()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#toolfuse.observation"><code class="docutils literal notranslate"><span class="pre">observation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#actions-observations">Actions &amp; Observations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#toolfuse.Action"><code class="docutils literal notranslate"><span class="pre">Action</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Action.name"><code class="docutils literal notranslate"><span class="pre">Action.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Action.method"><code class="docutils literal notranslate"><span class="pre">Action.method</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Action.schema"><code class="docutils literal notranslate"><span class="pre">Action.schema</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Action.description"><code class="docutils literal notranslate"><span class="pre">Action.description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Action.__call__"><code class="docutils literal notranslate"><span class="pre">Action.__call__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#toolfuse.Observation"><code class="docutils literal notranslate"><span class="pre">Observation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Observation.name"><code class="docutils literal notranslate"><span class="pre">Observation.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Observation.method"><code class="docutils literal notranslate"><span class="pre">Observation.method</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Observation.schema"><code class="docutils literal notranslate"><span class="pre">Observation.schema</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Observation.description"><code class="docutils literal notranslate"><span class="pre">Observation.description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Observation.__call__"><code class="docutils literal notranslate"><span class="pre">Observation.__call__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">-------</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://agentsea.github.io">Back to Agentsea Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ToolFuse</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading">¶</a></h1>
+<p>The <cite>toolfuse</cite> package provides an interface for defining Tools with actions and observations.</p>
+<section id="tool">
+<h2>Tool<a class="headerlink" href="#tool" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="toolfuse.Tool">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">toolfuse.</span></span><span class="sig-name descname"><span class="pre">Tool</span></span><a class="reference internal" href="_modules/toolfuse/base.html#Tool"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Tool" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>A Tool is an abstract base class that defines the interface for agent tools.</p>
+<p>Agent tools are the primary means by which an agent interacts with its environment.
+They encapsulate actions that an agent can perform and observations that an agent
+can make to understand the state of the environment. This class provides the necessary
+infrastructure for registering and managing these actions and observations.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="toolfuse.Tool.actions">
+<span class="sig-name descname"><span class="pre">actions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#toolfuse.Action" title="toolfuse.base.Action"><span class="pre">Action</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#Tool.actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Tool.actions" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a list of all registered actions that the agent can take.</p>
+<p>Each action represents a potential operation that the agent can perform in its environment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of Action instances representing the available actions.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="#toolfuse.Action" title="toolfuse.Action">Action</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="toolfuse.Tool.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#Tool.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Tool.close" title="Link to this definition">¶</a></dt>
+<dd><p>A method that should be implemented by subclasses to handle the closing of the tool.</p>
+<p>This method is intended to provide a way to release any resources or perform any cleanup necessary
+when the tool is no longer needed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="toolfuse.Tool.context">
+<span class="sig-name descname"><span class="pre">context</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#Tool.context"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Tool.context" title="Link to this definition">¶</a></dt>
+<dd><p>LLM context fork the tool</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>LLM context for the tool</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="toolfuse.Tool.find_action">
+<span class="sig-name descname"><span class="pre">find_action</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#toolfuse.Action" title="toolfuse.base.Action"><span class="pre">Action</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#Tool.find_action"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Tool.find_action" title="Link to this definition">¶</a></dt>
+<dd><p>Searches for an action or observation by name and returns it if found.</p>
+<p>This method checks both the actions and observations lists for a match.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – The name of the action or observation to find.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The Action or Observation instance with the matching name, or None if not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[<a class="reference internal" href="#toolfuse.Action" title="toolfuse.Action">Action</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="toolfuse.Tool.json_schema">
+<span class="sig-name descname"><span class="pre">json_schema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#Tool.json_schema"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Tool.json_schema" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a list of JSON schemas representing the tool’s actions.</p>
+<p>Each schema provides a structured description of an action’s interface, including its name,
+expected arguments, and other metadata.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>actions_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, only the action schemas will be returned. Defaults to False.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of dictionaries, each representing the JSON schema of an action.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[Dict[str, Any]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="toolfuse.Tool.name">
+<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#Tool.name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Tool.name" title="Link to this definition">¶</a></dt>
+<dd><p>Tool name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tool name</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="toolfuse.Tool.observations">
+<span class="sig-name descname"><span class="pre">observations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#toolfuse.Observation" title="toolfuse.base.Observation"><span class="pre">Observation</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#Tool.observations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Tool.observations" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a list of all registered observations that the agent can make.</p>
+<p>Each observation represents a piece of information that the agent can gather from its environment
+to inform its decision-making process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of Observation instances representing the available observations.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="#toolfuse.Observation" title="toolfuse.Observation">Observation</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="toolfuse.Tool.observe">
+<span class="sig-name descname"><span class="pre">observe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">observation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#toolfuse.Observation" title="toolfuse.base.Observation"><span class="pre">Observation</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#Tool.observe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Tool.observe" title="Link to this definition">¶</a></dt>
+<dd><p>Executes an observation with the provided arguments and keyword arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>observation</strong> (<a class="reference internal" href="#toolfuse.Observation" title="toolfuse.Observation"><em>Observation</em></a>) – The Observation instance representing the observation to run.</p></li>
+<li><p><strong>*args</strong> – Variable length argument list for the observation.</p></li>
+<li><p><strong>**kwargs</strong> – Arbitrary keyword arguments for the observation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The result of the observation execution, which can vary depending on the observation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="toolfuse.Tool.use">
+<span class="sig-name descname"><span class="pre">use</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#toolfuse.Action" title="toolfuse.base.Action"><span class="pre">Action</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#Tool.use"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Tool.use" title="Link to this definition">¶</a></dt>
+<dd><p>Executes an action with the provided arguments and keyword arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>action</strong> (<a class="reference internal" href="#toolfuse.Action" title="toolfuse.Action"><em>Action</em></a>) – The Action instance representing the action to perform.</p></li>
+<li><p><strong>*args</strong> – Variable length argument list for the action.</p></li>
+<li><p><strong>**kwargs</strong> – Arbitrary keyword arguments for the action.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The result of the action execution, which can vary depending on the action.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="decorators">
+<h2>Decorators<a class="headerlink" href="#decorators" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="toolfuse.action">
+<span class="sig-prename descclassname"><span class="pre">toolfuse.</span></span><span class="sig-name descname"><span class="pre">action</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#action"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.action" title="Link to this definition">¶</a></dt>
+<dd><p>A decorator that marks a method as an action within the Tool.</p>
+<p>This decorator adds a special attribute to the method indicating that it
+should be treated as an action. Actions are potential operations that an
+agent can perform in its environment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>method</strong> (<em>Callable</em>) – The method to be marked as an action.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The original method with the added ‘_is_action’ attribute.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Callable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="toolfuse.observation">
+<span class="sig-prename descclassname"><span class="pre">toolfuse.</span></span><span class="sig-name descname"><span class="pre">observation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#observation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.observation" title="Link to this definition">¶</a></dt>
+<dd><p>A decorator that marks a method as an observation within the Tool.</p>
+<p>This decorator adds a special attribute to the method indicating that it
+should be treated as an observation. Observations are pieces of information
+that an agent can gather from its environment to inform its decision-making
+process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>method</strong> (<em>Callable</em>) – The method to be marked as an observation.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The original method with the added ‘_is_observation’ attribute.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Callable</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="actions-observations">
+<h2>Actions &amp; Observations<a class="headerlink" href="#actions-observations" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="toolfuse.Action">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">toolfuse.</span></span><span class="sig-name descname"><span class="pre">Action</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schema</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/toolfuse/base.html#Action"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Action" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Represents an action that an agent can perform in an environment.</p>
+<p>This class is used to encapsulate information about an action, including its
+name, the method that implements the action, the schema that defines the
+structure of the action’s parameters, and a human-readable description of the
+action.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="toolfuse.Action.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#toolfuse.Action.name" title="Link to this definition">¶</a></dt>
+<dd><p>The name of the action. This is typically a unique identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="toolfuse.Action.method">
+<span class="sig-name descname"><span class="pre">method</span></span><a class="headerlink" href="#toolfuse.Action.method" title="Link to this definition">¶</a></dt>
+<dd><p>The callable method that is executed when the action is taken.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Callable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="toolfuse.Action.schema">
+<span class="sig-name descname"><span class="pre">schema</span></span><a class="headerlink" href="#toolfuse.Action.schema" title="Link to this definition">¶</a></dt>
+<dd><p>A dictionary that defines the structure and types of the parameters
+that the action expects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="toolfuse.Action.description">
+<span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#toolfuse.Action.description" title="Link to this definition">¶</a></dt>
+<dd><p>A human-readable description of what the action does and its
+purpose within the context of the agent’s environment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="toolfuse.Action.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#Action.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Action.__call__" title="Link to this definition">¶</a></dt>
+<dd><p>Allows the Action instance to be called like a function, which will in turn
+call the method associated with this action, passing through any arguments
+and keyword arguments.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="toolfuse.Observation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">toolfuse.</span></span><span class="sig-name descname"><span class="pre">Observation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schema</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/toolfuse/base.html#Observation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Observation" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#toolfuse.Action" title="toolfuse.base.Action"><code class="xref py py-class docutils literal notranslate"><span class="pre">Action</span></code></a></p>
+<p>Represents an observation that an agent can make in an environment.</p>
+<p>This class is used to encapsulate information about an observation, including its
+name, the method that implements the observation, the schema that defines the
+structure of the observation’s data, and a human-readable description of the
+observation.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="toolfuse.Observation.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#toolfuse.Observation.name" title="Link to this definition">¶</a></dt>
+<dd><p>The name of the observation. This is typically a unique identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="toolfuse.Observation.method">
+<span class="sig-name descname"><span class="pre">method</span></span><a class="headerlink" href="#toolfuse.Observation.method" title="Link to this definition">¶</a></dt>
+<dd><p>The callable method that is executed to obtain the observation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Callable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="toolfuse.Observation.schema">
+<span class="sig-name descname"><span class="pre">schema</span></span><a class="headerlink" href="#toolfuse.Observation.schema" title="Link to this definition">¶</a></dt>
+<dd><p>A dictionary that defines the structure and types of the data
+that the observation returns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="toolfuse.Observation.description">
+<span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#toolfuse.Observation.description" title="Link to this definition">¶</a></dt>
+<dd><p>A human-readable description of what the observation represents
+and its purpose within the context of the agent’s environment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="toolfuse.Observation.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#Observation.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Observation.__call__" title="Link to this definition">¶</a></dt>
+<dd><p>Allows the Observation instance to be called like a function, which will in turn
+call the method associated with this observation, passing through any arguments
+and keyword arguments.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Agent Tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kentauros AI.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
