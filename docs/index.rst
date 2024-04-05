@@ -8,6 +8,6 @@ ToolFuse Library Reference
 
 .. toctree::
    :maxdepth: 1
-   :caption: -------
+   :caption: ↪
 
-   Back to Agentsea Documentation <https://agentsea.github.io>
+   Go to User Guide <https://agentsea.github.io/toolfuse.html>
