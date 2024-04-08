@@ -22,7 +22,7 @@
   <br>
 </p>
 
-ToolFuse provides a common potocol for AI agent tools, use them with your favorite agent framework or model.
+ToolFuse provides a common protocol for AI agent tools, use them with your favorite agent framework or model.
 
 ## Installation
 

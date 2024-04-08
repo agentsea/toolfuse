@@ -4,7 +4,7 @@ from inspect import getdoc
 import inspect
 import re
 
-from .function import FunctionWrapper
+from toolcore import FunctionWrapper
 
 
 class Action:
@@ -131,7 +131,7 @@ def action(method: Callable) -> Callable:
     Returns:
         Callable: The original method with the added '_is_action' attribute.
     """
-    method._is_action = True
+    method._is_action = True  # type: ignore
     return method
 
 
@@ -150,7 +150,7 @@ def observation(method: Callable) -> Callable:
     Returns:
         Callable: The original method with the added '_is_observation' attribute.
     """
-    method._is_observation = True
+    method._is_observation = True  # type: ignore
     return method
 
 
@@ -324,7 +324,7 @@ class Tool(ABC):
         Returns:
             str: LLM context for the tool
         """
-        return self.__doc__
+        return self.__doc__  # type: ignore
 
     def name(self) -> str:
         """Tool name
@@ -348,7 +348,7 @@ def tool_from_cls(cls: Type[T]) -> Type[Tool]:
 
     class Combined(Tool, cls):
         def __init__(self, *args, **kwargs):
-            cls.__init__(self, *args, **kwargs)  # Initialize the original class
+            cls.__init__(self, *args, **kwargs)  # type: ignore
             Tool.__init__(self)  # Initialize the Tool part of the combined class
             self._register_methods_from_cls()
 
@@ -483,7 +483,7 @@ def tool_from_object(obj: Any) -> Type[Tool]:
 
     ObjectTool.__name__ = f"{obj.__class__.__name__}Tool"
     # Return an instance of ObjectTool instead of the class itself, as we need to pass the object instance to it
-    return ObjectTool(obj)
+    return ObjectTool(obj)  # type: ignore
 
 
 def tool(input: Union[Type, Callable, Any]) -> Union[Type[Tool], Tool]:
