@@ -78,7 +78,7 @@
 <span class="kn">import</span> <span class="nn">inspect</span>
 <span class="kn">import</span> <span class="nn">re</span>
 
-<span class="kn">from</span> <span class="nn">.function</span> <span class="kn">import</span> <span class="n">FunctionWrapper</span>
+<span class="kn">from</span> <span class="nn">toolcore</span> <span class="kn">import</span> <span class="n">FunctionWrapper</span>
 
 
 <div class="viewcode-block" id="Action">
@@ -219,7 +219,7 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        Callable: The original method with the added &#39;_is_action&#39; attribute.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">method</span><span class="o">.</span><span class="n">_is_action</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">method</span><span class="o">.</span><span class="n">_is_action</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># type: ignore</span>
     <span class="k">return</span> <span class="n">method</span></div>
 
 
@@ -241,7 +241,7 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        Callable: The original method with the added &#39;_is_observation&#39; attribute.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">method</span><span class="o">.</span><span class="n">_is_observation</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">method</span><span class="o">.</span><span class="n">_is_observation</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># type: ignore</span>
     <span class="k">return</span> <span class="n">method</span></div>
 
 
@@ -441,7 +441,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            str: LLM context for the tool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__doc__</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__doc__</span>  <span class="c1"># type: ignore</span></div>
 
 
 <div class="viewcode-block" id="Tool.name">
@@ -470,7 +470,7 @@
 
     <span class="k">class</span> <span class="nc">Combined</span><span class="p">(</span><span class="n">Tool</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
         <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-            <span class="bp">cls</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># Initialize the original class</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
             <span class="n">Tool</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="c1"># Initialize the Tool part of the combined class</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_register_methods_from_cls</span><span class="p">()</span>
 
@@ -605,7 +605,7 @@
 
     <span class="n">ObjectTool</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">obj</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">Tool&quot;</span>
     <span class="c1"># Return an instance of ObjectTool instead of the class itself, as we need to pass the object instance to it</span>
-    <span class="k">return</span> <span class="n">ObjectTool</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ObjectTool</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
 
 
 <span class="k">def</span> <span class="nf">tool</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Type</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="n">Tool</span><span class="p">],</span> <span class="n">Tool</span><span class="p">]:</span>
