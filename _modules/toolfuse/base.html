@@ -446,13 +446,14 @@
 
 <div class="viewcode-block" id="Tool.name">
 <a class="viewcode-back" href="../../api.html#toolfuse.Tool.name">[docs]</a>
-    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Tool name</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            str: Tool name</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span></div>
 </div>
 
 
@@ -474,7 +475,8 @@
             <span class="n">Tool</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="c1"># Initialize the Tool part of the combined class</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_register_methods_from_cls</span><span class="p">()</span>
 
-        <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="nd">@classmethod</span>
+        <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span>
 
         <span class="k">def</span> <span class="nf">_register_methods_from_cls</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
