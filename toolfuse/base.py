@@ -326,13 +326,14 @@ class Tool(ABC):
         """
         return self.__doc__  # type: ignore
 
-    def name(self) -> str:
+    @classmethod
+    def name(cls) -> str:
         """Tool name
 
         Returns:
             str: Tool name
         """
-        return self.__class__.__name__
+        return cls.__name__
 
 
 def tool_from_cls(cls: Type[T]) -> Type[Tool]:
@@ -352,7 +353,8 @@ def tool_from_cls(cls: Type[T]) -> Type[Tool]:
             Tool.__init__(self)  # Initialize the Tool part of the combined class
             self._register_methods_from_cls()
 
-        def name(self) -> str:
+        @classmethod
+        def name(cls) -> str:
             return cls.__name__
 
         def _register_methods_from_cls(self):
