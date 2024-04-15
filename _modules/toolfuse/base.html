@@ -556,7 +556,7 @@
     <span class="k">return</span> <span class="n">FunctionTool</span>
 
 
-<span class="k">def</span> <span class="nf">tool_from_object</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Type</span><span class="p">[</span><span class="n">Tool</span><span class="p">]:</span>
+<span class="k">def</span> <span class="nf">tool_from_object</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Dynamically creates a subclass of `Tool` that encapsulates the methods of a given object instance as actions.</span>
 
@@ -564,7 +564,7 @@
 <span class="sd">        obj (Any): The object instance whose methods are to be encapsulated as actions in the Tool.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        Type[Tool]: A new subclass of Tool that includes the object&#39;s methods as actions.</span>
+<span class="sd">        Tool: A new subclass of Tool that includes the object&#39;s methods as actions.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">class</span> <span class="nc">ObjectTool</span><span class="p">(</span><span class="n">Tool</span><span class="p">):</span>
