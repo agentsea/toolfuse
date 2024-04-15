@@ -434,7 +434,7 @@ def tool_from_function(function: Callable) -> Type[Tool]:
     return FunctionTool
 
 
-def tool_from_object(obj: Any) -> Type[Tool]:
+def tool_from_object(obj: Any) -> Tool:
     """
     Dynamically creates a subclass of `Tool` that encapsulates the methods of a given object instance as actions.
 
@@ -442,7 +442,7 @@ def tool_from_object(obj: Any) -> Type[Tool]:
         obj (Any): The object instance whose methods are to be encapsulated as actions in the Tool.
 
     Returns:
-        Type[Tool]: A new subclass of Tool that includes the object's methods as actions.
+        Tool: A new subclass of Tool that includes the object's methods as actions.
     """
 
     class ObjectTool(Tool):
