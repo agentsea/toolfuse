@@ -451,7 +451,7 @@ def tool_from_function(function: Callable) -> Type[Tool]:
             _register_function_as_action(self, function: Callable): Registers the provided function as an action for the Tool.
         """
 
-        def __init__(self, function: Callable):
+        def __init__(self):
             """
             Initializes a new instance of the FunctionTool class.
 
