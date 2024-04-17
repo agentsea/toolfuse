@@ -470,18 +470,55 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">class</span> <span class="nc">Combined</span><span class="p">(</span><span class="n">Tool</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A combined class that inherits from both Tool and a user-defined class (cls).</span>
+
+<span class="sd">        This class is dynamically created to combine the functionality of a user-defined class</span>
+<span class="sd">        with the Tool class, allowing methods from the user-defined class to be registered as actions</span>
+<span class="sd">        within the Tool framework. It initializes both parent classes and registers the user-defined</span>
+<span class="sd">        class&#39;s methods as actions.</span>
+
+<span class="sd">        Attributes:</span>
+<span class="sd">            Inherits all attributes from the Tool class and the user-defined class (cls).</span>
+
+<span class="sd">        Methods:</span>
+<span class="sd">            __init__(*args, **kwargs): Initializes the Combined class, the Tool part of the class,</span>
+<span class="sd">                                       and registers methods from the user-defined class as actions.</span>
+<span class="sd">            name(): Returns the name of the class.</span>
+<span class="sd">            _register_methods_from_cls(): Registers public methods from the user-defined class as actions.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-            <span class="bp">cls</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Initializes the Combined class by initializing both the user-defined class part and the Tool class part.</span>
+<span class="sd">            It also registers the methods from the user-defined class (cls) as actions within the Tool framework.</span>
+
+<span class="sd">            Args:</span>
+<span class="sd">                *args: Variable length argument list passed to the user-defined class initializer.</span>
+<span class="sd">                **kwargs: Arbitrary keyword arguments passed to the user-defined class initializer.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+                <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+            <span class="p">)</span>  <span class="c1"># Initialize the user-defined part of the combined class</span>
             <span class="n">Tool</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="c1"># Initialize the Tool part of the combined class</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_register_methods_from_cls</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_register_methods_from_cls</span><span class="p">()</span>  <span class="c1"># Register methods from cls as actions</span>
 
         <span class="nd">@classmethod</span>
         <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Returns the name of the class.</span>
+
+<span class="sd">            Returns:</span>
+<span class="sd">                str: The name of the class.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
             <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span>
 
         <span class="k">def</span> <span class="nf">_register_methods_from_cls</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">            Registers all public methods of `cls` as actions for the Tool.</span>
+<span class="sd">            Registers all public methods from the user-defined class (cls) as actions.</span>
+
+<span class="sd">            This method iterates over all public methods of cls and registers them as actions,</span>
+<span class="sd">            allowing them to be utilized within the Tool framework.</span>
 <span class="sd">            &quot;&quot;&quot;</span>
             <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">method</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="n">inspect</span><span class="o">.</span><span class="n">ismethod</span><span class="p">):</span>
                 <span class="c1"># Skip private and protected methods, skip methods from Tool or object class</span>
@@ -523,13 +560,36 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">class</span> <span class="nc">FunctionTool</span><span class="p">(</span><span class="n">Tool</span><span class="p">):</span>
-        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A subclass of `Tool` designed to encapsulate a single function as an actionable method within the Tool framework.</span>
+
+<span class="sd">        This class takes a function upon initialization and registers it as an action, making it callable within the context of the Tool&#39;s environment. The primary purpose of this class is to allow standalone functions to be seamlessly integrated into the Tool framework, providing a straightforward way to extend functionality with custom actions.</span>
+
+<span class="sd">        Attributes:</span>
+<span class="sd">            function (Callable): The function that is encapsulated as an action within the Tool.</span>
+
+<span class="sd">        Methods:</span>
+<span class="sd">            __init__(self, function: Callable): Initializes a new instance of the FunctionTool class, registering the provided function as an action.</span>
+<span class="sd">            _register_function_as_action(self, function: Callable): Registers the provided function as an action for the Tool.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">):</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Initializes a new instance of the FunctionTool class.</span>
+
+<span class="sd">            This constructor method takes a function as an argument and calls the internal method to register it as an action within the Tool.</span>
+
+<span class="sd">            Args:</span>
+<span class="sd">                function (Callable): The function to be encapsulated as an action in the Tool.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
             <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_register_function_as_action</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
 
         <span class="k">def</span> <span class="nf">_register_function_as_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">):</span>
 <span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Registers the provided function as an action for the Tool.</span>
+
+<span class="sd">            This method wraps the given function to extract its schema and documentation, creating an Action instance that encapsulates the function. This allows the function to be called as an action within the Tool&#39;s environment.</span>
 
 <span class="sd">            Args:</span>
 <span class="sd">                function (Callable): The function to be registered as an action.</span>
@@ -568,7 +628,28 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">class</span> <span class="nc">ObjectTool</span><span class="p">(</span><span class="n">Tool</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A subclass of `Tool` that encapsulates the methods of a given object instance as actions.</span>
+
+<span class="sd">        This class dynamically creates actions based on the public methods of the provided object instance. Each method is wrapped as an `Action` object, allowing it to be invoked within the Tool&#39;s environment.</span>
+
+<span class="sd">        Attributes:</span>
+<span class="sd">            obj_instance (Any): The object instance whose methods are to be encapsulated as actions.</span>
+
+<span class="sd">        Methods:</span>
+<span class="sd">            __init__(self, obj_instance: Any): Initializes a new instance of `ObjectTool` with the given object.</span>
+<span class="sd">            _register_methods_from_object(self): Registers all public methods of `obj_instance` as actions.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj_instance</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Initializes a new instance of `ObjectTool`.</span>
+
+<span class="sd">            This constructor method takes an object instance as an argument and calls the internal method to register its public methods as actions within the Tool.</span>
+
+<span class="sd">            Args:</span>
+<span class="sd">                obj_instance (Any): The object instance whose methods are to be encapsulated as actions.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
             <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">obj_instance</span> <span class="o">=</span> <span class="n">obj_instance</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_register_methods_from_object</span><span class="p">()</span>
@@ -576,6 +657,8 @@
         <span class="k">def</span> <span class="nf">_register_methods_from_object</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Registers all public methods of the object instance as actions for the Tool.</span>
+
+<span class="sd">            This method iterates over all public methods of the provided object instance, excluding private, protected, and dunder methods. Each method is wrapped as an `Action` object and added to the tool&#39;s actions list.</span>
 <span class="sd">            &quot;&quot;&quot;</span>
             <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">method</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">obj_instance</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="n">inspect</span><span class="o">.</span><span class="n">ismethod</span>
