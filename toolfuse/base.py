@@ -348,18 +348,55 @@ def tool_from_cls(cls: Type[T]) -> Type[Tool]:
     """
 
     class Combined(Tool, cls):
+        """
+        A combined class that inherits from both Tool and a user-defined class (cls).
+
+        This class is dynamically created to combine the functionality of a user-defined class
+        with the Tool class, allowing methods from the user-defined class to be registered as actions
+        within the Tool framework. It initializes both parent classes and registers the user-defined
+        class's methods as actions.
+
+        Attributes:
+            Inherits all attributes from the Tool class and the user-defined class (cls).
+
+        Methods:
+            __init__(*args, **kwargs): Initializes the Combined class, the Tool part of the class,
+                                       and registers methods from the user-defined class as actions.
+            name(): Returns the name of the class.
+            _register_methods_from_cls(): Registers public methods from the user-defined class as actions.
+        """
+
         def __init__(self, *args, **kwargs):
-            cls.__init__(self, *args, **kwargs)  # type: ignore
+            """
+            Initializes the Combined class by initializing both the user-defined class part and the Tool class part.
+            It also registers the methods from the user-defined class (cls) as actions within the Tool framework.
+
+            Args:
+                *args: Variable length argument list passed to the user-defined class initializer.
+                **kwargs: Arbitrary keyword arguments passed to the user-defined class initializer.
+            """
+            cls.__init__(
+                self, *args, **kwargs
+            )  # Initialize the user-defined part of the combined class
             Tool.__init__(self)  # Initialize the Tool part of the combined class
-            self._register_methods_from_cls()
+            self._register_methods_from_cls()  # Register methods from cls as actions
 
         @classmethod
         def name(cls) -> str:
+            """
+            Returns the name of the class.
+
+            Returns:
+                str: The name of the class.
+            """
             return cls.__name__
 
         def _register_methods_from_cls(self):
             """
-            Registers all public methods of `cls` as actions for the Tool.
+            Registers all public methods from the user-defined class (cls) as actions.
+
+            This method iterates over all public methods of cls and registers them as actions,
+            allowing them to be utilized within the Tool framework.
             """
             for name, method in inspect.getmembers(self, predicate=inspect.ismethod):
                 # Skip private and protected methods, skip methods from Tool or object class
@@ -401,13 +438,36 @@ def tool_from_function(function: Callable) -> Type[Tool]:
     """
 
     class FunctionTool(Tool):
-        def __init__(self):
+        """
+        A subclass of `Tool` designed to encapsulate a single function as an actionable method within the Tool framework.
+
+        This class takes a function upon initialization and registers it as an action, making it callable within the context of the Tool's environment. The primary purpose of this class is to allow standalone functions to be seamlessly integrated into the Tool framework, providing a straightforward way to extend functionality with custom actions.
+
+        Attributes:
+            function (Callable): The function that is encapsulated as an action within the Tool.
+
+        Methods:
+            __init__(self, function: Callable): Initializes a new instance of the FunctionTool class, registering the provided function as an action.
+            _register_function_as_action(self, function: Callable): Registers the provided function as an action for the Tool.
+        """
+
+        def __init__(self, function: Callable):
+            """
+            Initializes a new instance of the FunctionTool class.
+
+            This constructor method takes a function as an argument and calls the internal method to register it as an action within the Tool.
+
+            Args:
+                function (Callable): The function to be encapsulated as an action in the Tool.
+            """
             super().__init__()
             self._register_function_as_action(function)
 
         def _register_function_as_action(self, function: Callable):
             """
             Registers the provided function as an action for the Tool.
+
+            This method wraps the given function to extract its schema and documentation, creating an Action instance that encapsulates the function. This allows the function to be called as an action within the Tool's environment.
 
             Args:
                 function (Callable): The function to be registered as an action.
@@ -446,7 +506,28 @@ def tool_from_object(obj: Any) -> Tool:
     """
 
     class ObjectTool(Tool):
+        """
+        A subclass of `Tool` that encapsulates the methods of a given object instance as actions.
+
+        This class dynamically creates actions based on the public methods of the provided object instance. Each method is wrapped as an `Action` object, allowing it to be invoked within the Tool's environment.
+
+        Attributes:
+            obj_instance (Any): The object instance whose methods are to be encapsulated as actions.
+
+        Methods:
+            __init__(self, obj_instance: Any): Initializes a new instance of `ObjectTool` with the given object.
+            _register_methods_from_object(self): Registers all public methods of `obj_instance` as actions.
+        """
+
         def __init__(self, obj_instance: Any):
+            """
+            Initializes a new instance of `ObjectTool`.
+
+            This constructor method takes an object instance as an argument and calls the internal method to register its public methods as actions within the Tool.
+
+            Args:
+                obj_instance (Any): The object instance whose methods are to be encapsulated as actions.
+            """
             super().__init__()
             self.obj_instance = obj_instance
             self._register_methods_from_object()
@@ -454,6 +535,8 @@ def tool_from_object(obj: Any) -> Tool:
         def _register_methods_from_object(self):
             """
             Registers all public methods of the object instance as actions for the Tool.
+
+            This method iterates over all public methods of the provided object instance, excluding private, protected, and dunder methods. Each method is wrapped as an `Action` object and added to the tool's actions list.
             """
             for name, method in inspect.getmembers(
                 self.obj_instance, predicate=inspect.ismethod

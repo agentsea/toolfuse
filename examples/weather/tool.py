@@ -5,7 +5,8 @@ from toolfuse import Tool, action, observation
 
 # Load the API key from the .env file
 load_dotenv()
-OPEN_AI_KEY = os.environ.get('OPEN_AI_KEY')
+OPEN_AI_KEY = os.environ.get("OPEN_AI_KEY")
+
 
 class WeatherLogger(Tool):
     def __init__(self):
@@ -29,11 +30,12 @@ class WeatherLogger(Tool):
             return f"HTTP Error: {err}"
         except requests.exceptions.RequestException as e:
             return f"Error: Could not retrieve weather data. {e}"
-        
+
     def close(self):
         """Close the WeatherLogger tool and release any resources."""
         # Since there are no resources to release in this simple example, pass is used.
         pass
+
 
 if __name__ == "__main__":
     # Example usage
