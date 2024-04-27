@@ -386,7 +386,7 @@ def tool_from_cls(cls: Type[T]) -> Type[Tool]:
                 **kwargs: Arbitrary keyword arguments passed to the user-defined class initializer.
             """
             cls.__init__(
-                self, *args, **kwargs
+                self, *args, **kwargs  # type: ignore
             )  # Initialize the user-defined part of the combined class
             Tool.__init__(self)  # Initialize the Tool part of the combined class
             self._register_methods_from_cls()  # Register methods from cls as actions
