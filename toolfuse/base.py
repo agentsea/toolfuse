@@ -1,10 +1,12 @@
 from abc import ABC
 from typing import List, Callable, Any, Dict, Optional, TypeVar, Type, Union
-from inspect import getdoc
+from inspect import getdoc, getmodule
 import inspect
 import re
+from importlib.metadata import version as pkgversion
 
 from toolcore import FunctionWrapper
+from .models import V1ToolRef
 
 
 class Action:
@@ -334,6 +336,14 @@ class Tool(ABC):
             str: Tool name
         """
         return cls.__name__
+
+    def ref(self) -> V1ToolRef:
+        """Tool reference"""
+        module = getmodule(self)
+        if not module:
+            raise ValueError("Tool not associated with a module")
+        version = pkgversion(module.__name__)
+        return V1ToolRef(module=module.__name__, name=self.name(), version=version)
 
 
 def tool_from_cls(cls: Type[T]) -> Type[Tool]:
