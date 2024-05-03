@@ -342,7 +342,8 @@ class Tool(ABC):
         module = getmodule(self)
         if not module:
             raise ValueError("Tool not associated with a module")
-        version = pkgversion(module.__name__)
+        mod_parts = module.__name__.split(".")
+        version = pkgversion(mod_parts[0])
         return V1ToolRef(module=module.__name__, name=self.name(), version=version)
 
 
