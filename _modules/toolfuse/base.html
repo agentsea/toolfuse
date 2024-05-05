@@ -263,14 +263,18 @@
 <span class="sd">    infrastructure for registering and managing these actions and observations.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wraps</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Tool&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initializes a new instance of the Tool class, setting up the lists for actions and observations</span>
 <span class="sd">        and registering the methods defined in the subclass.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            wraps (Tool): An optional Tool instance that this Tool instance should wrap.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_actions_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Action</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_observations_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Observation</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_register_methods</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wraps</span> <span class="o">=</span> <span class="n">wraps</span>
 
     <span class="k">def</span> <span class="nf">_register_methods</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -320,7 +324,10 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            List[Action]: A list of Action instances representing the available actions.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_actions_list</span></div>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_actions_list</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">wraps</span><span class="p">:</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wraps</span><span class="o">.</span><span class="n">_actions_list</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span></div>
 
 
 <div class="viewcode-block" id="Tool.observations">
@@ -335,7 +342,10 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            List[Observation]: A list of Observation instances representing the available observations.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_observations_list</span></div>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_observations_list</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">wraps</span><span class="p">:</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wraps</span><span class="o">.</span><span class="n">_observations_list</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span></div>
 
 
 <div class="viewcode-block" id="Tool.use">
@@ -420,6 +430,16 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            Optional[Action]: The Action or Observation instance with the matching name, or None if not found.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">wraps</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">wraps</span><span class="o">.</span><span class="n">actions</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">action</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">action</span>
+
+            <span class="k">for</span> <span class="n">observation</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">wraps</span><span class="o">.</span><span class="n">observations</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">observation</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">observation</span>
+
         <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">actions</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">action</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">action</span>
