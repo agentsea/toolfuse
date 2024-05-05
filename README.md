@@ -32,7 +32,7 @@ pip install toolfuse
 
 ## Usage
 
-Let's define a simple weather logger tool
+A simple weather logger tool
 
 ```python
 from toolfuse import Tool, action, observation
@@ -60,10 +60,34 @@ class WeatherLogger(Tool):
 
 ```
 
-We mark the functions to be made available to the agent as
+The functions to be made available to the agent as
 
 - `@action` if they mutate the environment
 - `@observation` if they are read only.
+
+Create a tool from an existing class
+
+```python
+from toolfuse import tool
+
+class Foo:
+  def echo(self, txt: str) -> str:
+    return txt
+
+
+foo_tool = tool(Foo)
+```
+
+Create a tool from an existing function
+
+```python
+from toolfuse import tool
+
+def echo(txt: str) -> str:
+  return txt
+
+echo_tool = tool(echo)
+```
 
 ### Function Calling
 
@@ -122,9 +146,50 @@ for tool in assistant_message["tool_calls"]:
     resp = weatherlogger.use(action, **args)
 ```
 
+## MultiTool
+
+Combine tools with MultiTool
+
+```python
+from toolfuse import Tool, MultiTool
+
+class Chat(Tool):
+  """A simple chat tool"""
+
+    @action
+    def send_message(self, message: str) -> None:
+        """Logs a message to the log file."""
+
+        with open("chat.txt", "a") as file:
+            file.write("***\n" + message + "\n")
+
+
+multitool = MultiTool(tools=[WeatherLogger(), Chat()])
+multitool.json_schema()
+```
+
+Merge one tools actions into another
+
+```python
+chat_tool = Chat()
+chat_tool.merge(WeatherLogger())
+```
+
+Add an action to a tool
+
+```python
+def echo(txt: str) -> str:
+  return txt
+
+weather_tool = WeatherLogger()
+weather_tool.add_action(echo)
+```
+
 ## Available Tools
 
 :computer: [AgentDesk](https://github.com/agentsea/agentdesk) provides AI agents with a full GUI desktop locally or in the cloud.
+
+:wrench: [AgentUtils](https://github.com/agentsea/toolfuse/blob/main/toolfuse/util.py) provides some basic utilities for agentic tool use
 
 ## Roadmap
 
