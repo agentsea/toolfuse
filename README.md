@@ -83,7 +83,7 @@ class Foo:
     return txt
 
 
-foo_tool = tool(Foo)
+foo_tool = tool(Foo())
 ```
 
 Create a tool from an existing function

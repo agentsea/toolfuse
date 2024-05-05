@@ -169,14 +169,18 @@ class Tool(ABC):
     infrastructure for registering and managing these actions and observations.
     """
 
-    def __init__(self) -> None:
+    def __init__(self, wraps: Optional["Tool"] = None) -> None:
         """
         Initializes a new instance of the Tool class, setting up the lists for actions and observations
         and registering the methods defined in the subclass.
+
+        Args:
+            wraps (Tool): An optional Tool instance that this Tool instance should wrap.
         """
         self._actions_list: List[Action] = []
         self._observations_list: List[Observation] = []
         self._register_methods()
+        self.wraps = wraps
 
     def _register_methods(self) -> None:
         """
@@ -224,7 +228,10 @@ class Tool(ABC):
         Returns:
             List[Action]: A list of Action instances representing the available actions.
         """
-        return self._actions_list
+        out = self._actions_list
+        if self.wraps:
+            out.extend(self.wraps._actions_list)
+        return out
 
     def observations(self) -> List[Observation]:
         """
@@ -236,7 +243,10 @@ class Tool(ABC):
         Returns:
             List[Observation]: A list of Observation instances representing the available observations.
         """
-        return self._observations_list
+        out = self._observations_list
+        if self.wraps:
+            out.extend(self.wraps._observations_list)
+        return out
 
     def use(self, action: Action, *args, **kwargs) -> Any:
         """
@@ -309,6 +319,16 @@ class Tool(ABC):
         Returns:
             Optional[Action]: The Action or Observation instance with the matching name, or None if not found.
         """
+
+        if self.wraps:
+            for action in self.wraps.actions():
+                if action.name == name:
+                    return action
+
+            for observation in self.wraps.observations():
+                if observation.name == name:
+                    return observation
+
         for action in self.actions():
             if action.name == name:
                 return action
