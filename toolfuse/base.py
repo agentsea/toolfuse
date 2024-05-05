@@ -270,25 +270,31 @@ class Tool(ABC):
             )
         return observation(*args, **kwargs)
 
-    def json_schema(self, actions_only: bool = False) -> List[Dict[str, Any]]:
+    def json_schema(
+        self, actions_only: bool = False, exclude_names: List[str] = []
+    ) -> List[Dict[str, Any]]:
         """
-        Returns a list of JSON schemas representing the tool's actions.
+        Returns a list of JSON schemas representing the tool's actions and, optionally, observations,
+        excluding any actions or observations with names listed in 'exclude_names'.
 
-        Each schema provides a structured description of an action's interface, including its name,
+        Each schema provides a structured description of an action's or observation's interface, including its name,
         expected arguments, and other metadata.
 
         Args:
             actions_only (bool, optional): If True, only the action schemas will be returned. Defaults to False.
+            exclude_names (List[str], optional): A list of action or observation names to exclude from the schema output.
 
         Returns:
-            List[Dict[str, Any]]: A list of dictionaries, each representing the JSON schema of an action.
+            List[Dict[str, Any]]: A list of dictionaries, each representing the JSON schema of an action or observation not excluded.
         """
         out = []
         for action in self.actions():
-            out.append(action.schema)
+            if action.name not in exclude_names:
+                out.append(action.schema)
         if not actions_only:
             for observation in self.observations():
-                out.append(observation.schema)
+                if observation.name not in exclude_names:
+                    out.append(observation.schema)
         return out
 
     def find_action(self, name: str) -> Optional[Action]:
@@ -345,6 +351,135 @@ class Tool(ABC):
         mod_parts = module.__name__.split(".")
         version = pkgversion(mod_parts[0])
         return V1ToolRef(module=module.__name__, name=self.name(), version=version)
+
+    def add_action(self, method: Callable) -> None:
+        """
+        Adds a new action to the tool using only the method provided. Name, schema,
+        and description are derived automatically.
+
+        Args:
+            method (Callable): The callable method that implements the action.
+        """
+        name = method.__name__
+        schema = self._generate_schema(
+            method
+        )  # Assuming a method to generate schema automatically
+        description = self._parse_docstring(method)
+
+        action = Action(name, method, schema, description)
+        self._actions_list.append(action)
+
+    def add_observation(self, method: Callable) -> None:
+        """
+        Adds a new observation to the tool using only the method provided. Name, schema,
+        and description are derived automatically.
+
+        Args:
+            method (Callable): The callable method that implements the observation.
+        """
+        name = method.__name__
+        schema = self._generate_schema(
+            method
+        )  # Assuming a method to generate schema automatically
+        description = self._parse_docstring(method)
+
+        observation = Observation(name, method, schema, description)
+        self._observations_list.append(observation)
+
+    def _generate_schema(self, method: Callable) -> Dict[str, Any]:
+        """
+        Generates a schema based on the method signature. This can be as simple or as
+        complex as needed depending on how parameters are to be handled.
+
+        Args:
+            method (Callable): The method for which to generate a schema.
+
+        Returns:
+            Dict[str, Any]: A schema representing the parameters and their types.
+        """
+        # Example implementation using inspect to generate parameter types
+        params = inspect.signature(method).parameters
+        return {param: str(ptype.annotation) for param, ptype in params.items()}
+
+    def add_actions(self, methods: List[Callable]) -> None:
+        """
+        Adds multiple actions to the tool using a list of methods. Each method's name, schema,
+        and description are derived automatically.
+
+        Args:
+            methods (List[Callable]): A list of callable methods that implement actions.
+        """
+        for method in methods:
+            self.add_action(method)
+
+    def add_observations(self, methods: List[Callable]) -> None:
+        """
+        Adds multiple observations to the tool using a list of methods. Each method's name, schema,
+        and description are derived automatically.
+
+        Args:
+            methods (List[Callable]): A list of callable methods that implement observations.
+        """
+        for method in methods:
+            self.add_observation(method)
+
+    def _add_action(
+        self,
+        method: Callable,
+        name: Optional[str] = None,
+        schema: Optional[Dict] = None,
+        description: Optional[str] = None,
+    ) -> None:
+        """
+        Adds a new action to the tool using the provided method.
+        If the action with the same name already exists, it won't add it again.
+        """
+        if not name:
+            name = method.__name__
+        if any(action.name == name for action in self._actions_list):
+            return  # Prevent duplicate actions
+        action = Action(
+            name, method, schema or {}, description or self._parse_docstring(method)
+        )
+        self._actions_list.append(action)
+
+    def _add_observation(
+        self,
+        method: Callable,
+        name: Optional[str] = None,
+        schema: Optional[Dict] = None,
+        description: Optional[str] = None,
+    ) -> None:
+        """
+        Adds a new observation to the tool using the provided method.
+        """
+        if not name:
+            name = method.__name__
+        if any(obs.name == name for obs in self._observations_list):
+            return  # Prevent duplicate observations
+        observation = Observation(
+            name, method, schema or {}, description or self._parse_docstring(method)
+        )
+        self._observations_list.append(observation)
+
+    def merge(self, other: "Tool") -> None:
+        """
+        Merges the actions and observations from another tool into this tool.
+
+        Args:
+            other (Tool): The tool to merge into this tool.
+        """
+        for action in other.actions():
+            self._add_action(
+                action.method, action.name, action.schema, action.description
+            )
+        for observation in other.observations():
+            self._add_observation(
+                observation.method,
+                observation.name,
+                observation.schema,
+                observation.description,
+            )
 
 
 def tool_from_cls(cls: Type[T]) -> Type[Tool]:
