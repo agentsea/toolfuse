@@ -46,10 +46,15 @@
 <li class="toctree-l2"><a class="reference internal" href="#tool">Tool</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#toolfuse.Tool"><code class="docutils literal notranslate"><span class="pre">Tool</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.actions"><code class="docutils literal notranslate"><span class="pre">Tool.actions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.add_action"><code class="docutils literal notranslate"><span class="pre">Tool.add_action()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.add_actions"><code class="docutils literal notranslate"><span class="pre">Tool.add_actions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.add_observation"><code class="docutils literal notranslate"><span class="pre">Tool.add_observation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.add_observations"><code class="docutils literal notranslate"><span class="pre">Tool.add_observations()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.close"><code class="docutils literal notranslate"><span class="pre">Tool.close()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.context"><code class="docutils literal notranslate"><span class="pre">Tool.context()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.find_action"><code class="docutils literal notranslate"><span class="pre">Tool.find_action()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.json_schema"><code class="docutils literal notranslate"><span class="pre">Tool.json_schema()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.merge"><code class="docutils literal notranslate"><span class="pre">Tool.merge()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.name"><code class="docutils literal notranslate"><span class="pre">Tool.name()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.observations"><code class="docutils literal notranslate"><span class="pre">Tool.observations()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.observe"><code class="docutils literal notranslate"><span class="pre">Tool.observe()</span></code></a></li>
@@ -145,6 +150,54 @@ infrastructure for registering and managing these actions and observations.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="toolfuse.Tool.add_action">
+<span class="sig-name descname"><span class="pre">add_action</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#Tool.add_action"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Tool.add_action" title="Link to this definition">¶</a></dt>
+<dd><p>Adds a new action to the tool using only the method provided. Name, schema,
+and description are derived automatically.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>method</strong> (<em>Callable</em>) – The callable method that implements the action.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="toolfuse.Tool.add_actions">
+<span class="sig-name descname"><span class="pre">add_actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#Tool.add_actions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Tool.add_actions" title="Link to this definition">¶</a></dt>
+<dd><p>Adds multiple actions to the tool using a list of methods. Each method’s name, schema,
+and description are derived automatically.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>methods</strong> (<em>List</em><em>[</em><em>Callable</em><em>]</em>) – A list of callable methods that implement actions.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="toolfuse.Tool.add_observation">
+<span class="sig-name descname"><span class="pre">add_observation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#Tool.add_observation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Tool.add_observation" title="Link to this definition">¶</a></dt>
+<dd><p>Adds a new observation to the tool using only the method provided. Name, schema,
+and description are derived automatically.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>method</strong> (<em>Callable</em>) – The callable method that implements the observation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="toolfuse.Tool.add_observations">
+<span class="sig-name descname"><span class="pre">add_observations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#Tool.add_observations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Tool.add_observations" title="Link to this definition">¶</a></dt>
+<dd><p>Adds multiple observations to the tool using a list of methods. Each method’s name, schema,
+and description are derived automatically.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>methods</strong> (<em>List</em><em>[</em><em>Callable</em><em>]</em>) – A list of callable methods that implement observations.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="toolfuse.Tool.close">
 <span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#Tool.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Tool.close" title="Link to this definition">¶</a></dt>
 <dd><p>A method that should be implemented by subclasses to handle the closing of the tool.</p>
@@ -186,19 +239,34 @@ when the tool is no longer needed.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="toolfuse.Tool.json_schema">
-<span class="sig-name descname"><span class="pre">json_schema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#Tool.json_schema"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Tool.json_schema" title="Link to this definition">¶</a></dt>
-<dd><p>Returns a list of JSON schemas representing the tool’s actions.</p>
-<p>Each schema provides a structured description of an action’s interface, including its name,
+<span class="sig-name descname"><span class="pre">json_schema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#Tool.json_schema"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Tool.json_schema" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a list of JSON schemas representing the tool’s actions and, optionally, observations,
+excluding any actions or observations with names listed in ‘exclude_names’.</p>
+<p>Each schema provides a structured description of an action’s or observation’s interface, including its name,
 expected arguments, and other metadata.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>actions_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, only the action schemas will be returned. Defaults to False.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>actions_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, only the action schemas will be returned. Defaults to False.</p></li>
+<li><p><strong>exclude_names</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – A list of action or observation names to exclude from the schema output.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A list of dictionaries, each representing the JSON schema of an action.</p>
+<dd class="field-even"><p>A list of dictionaries, each representing the JSON schema of an action or observation not excluded.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>List[Dict[str, Any]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="toolfuse.Tool.merge">
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#toolfuse.Tool" title="toolfuse.base.Tool"><span class="pre">Tool</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#Tool.merge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Tool.merge" title="Link to this definition">¶</a></dt>
+<dd><p>Merges the actions and observations from another tool into this tool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> (<a class="reference internal" href="#toolfuse.Tool" title="toolfuse.Tool"><em>Tool</em></a>) – The tool to merge into this tool.</p>
 </dd>
 </dl>
 </dd></dl>
