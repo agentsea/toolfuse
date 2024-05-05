@@ -65,6 +65,14 @@ The functions to be made available to the agent as
 - `@action` if they mutate the environment
 - `@observation` if they are read only.
 
+Use the tool in a prompt
+
+```python
+weather_logger = WeatherLogger()
+
+msg = f"Please select the appropriate action from {weather_logger.json_schema()}"
+```
+
 Create a tool from an existing class
 
 ```python
