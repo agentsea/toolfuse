@@ -369,7 +369,11 @@ class Tool(ABC):
         if not module:
             raise ValueError("Tool not associated with a module")
         mod_parts = module.__name__.split(".")
-        version = pkgversion(mod_parts[0])
+        version = None
+        try:
+            version = pkgversion(mod_parts[0])
+        except:
+            pass
         return V1ToolRef(module=module.__name__, name=self.name(), version=version)
 
     def add_action(self, method: Callable) -> None:

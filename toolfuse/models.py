@@ -9,3 +9,4 @@ class V1ToolRef(BaseModel):
     module: str
     name: str
     version: Optional[str] = None
+    package: Optional[str] = None
