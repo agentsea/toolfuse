@@ -492,7 +492,11 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">module</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Tool not associated with a module&quot;</span><span class="p">)</span>
         <span class="n">mod_parts</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
-        <span class="n">version</span> <span class="o">=</span> <span class="n">pkgversion</span><span class="p">(</span><span class="n">mod_parts</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">version</span> <span class="o">=</span> <span class="n">pkgversion</span><span class="p">(</span><span class="n">mod_parts</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
         <span class="k">return</span> <span class="n">V1ToolRef</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">(),</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">)</span></div>
 
 
