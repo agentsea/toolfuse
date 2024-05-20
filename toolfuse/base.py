@@ -355,11 +355,11 @@ class Tool(ABC):
         return self.__doc__  # type: ignore
 
     @classmethod
-    def name(cls) -> str:
-        """Tool name
+    def type(cls) -> str:
+        """Tool type
 
         Returns:
-            str: Tool name
+            str: Tool type
         """
         return cls.__name__
 
@@ -374,7 +374,7 @@ class Tool(ABC):
             version = pkgversion(mod_parts[0])
         except:
             pass
-        return V1ToolRef(module=module.__name__, name=self.name(), version=version)
+        return V1ToolRef(module=module.__name__, type=self.type(), version=version)
 
     def add_action(self, method: Callable) -> None:
         """
@@ -532,7 +532,7 @@ def tool_from_cls(cls: Type[T]) -> Type[Tool]:
         Methods:
             __init__(*args, **kwargs): Initializes the Combined class, the Tool part of the class,
                                        and registers methods from the user-defined class as actions.
-            name(): Returns the name of the class.
+            type(): Returns the type of the class.
             _register_methods_from_cls(): Registers public methods from the user-defined class as actions.
         """
 
@@ -552,12 +552,12 @@ def tool_from_cls(cls: Type[T]) -> Type[Tool]:
             self._register_methods_from_cls()  # Register methods from cls as actions
 
         @classmethod
-        def name(cls) -> str:
+        def type(cls) -> str:
             """
-            Returns the name of the class.
+            Returns the type of the class.
 
             Returns:
-                str: The name of the class.
+                str: The type of the class.
             """
             return cls.__name__
 
