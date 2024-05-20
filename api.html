@@ -55,10 +55,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.find_action"><code class="docutils literal notranslate"><span class="pre">Tool.find_action()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.json_schema"><code class="docutils literal notranslate"><span class="pre">Tool.json_schema()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.merge"><code class="docutils literal notranslate"><span class="pre">Tool.merge()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.name"><code class="docutils literal notranslate"><span class="pre">Tool.name()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.observations"><code class="docutils literal notranslate"><span class="pre">Tool.observations()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.observe"><code class="docutils literal notranslate"><span class="pre">Tool.observe()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.ref"><code class="docutils literal notranslate"><span class="pre">Tool.ref()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.type"><code class="docutils literal notranslate"><span class="pre">Tool.type()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#toolfuse.Tool.use"><code class="docutils literal notranslate"><span class="pre">Tool.use()</span></code></a></li>
 </ul>
 </li>
@@ -272,20 +272,6 @@ expected arguments, and other metadata.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="toolfuse.Tool.name">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#Tool.name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Tool.name" title="Link to this definition">¶</a></dt>
-<dd><p>Tool name</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Tool name</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="toolfuse.Tool.observations">
 <span class="sig-name descname"><span class="pre">observations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#toolfuse.Observation" title="toolfuse.base.Observation"><span class="pre">Observation</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#Tool.observations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Tool.observations" title="Link to this definition">¶</a></dt>
 <dd><p>Returns a list of all registered observations that the agent can make.</p>
@@ -326,6 +312,20 @@ to inform its decision-making process.</p>
 <dt class="sig sig-object py" id="toolfuse.Tool.ref">
 <span class="sig-name descname"><span class="pre">ref</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">V1ToolRef</span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#Tool.ref"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Tool.ref" title="Link to this definition">¶</a></dt>
 <dd><p>Tool reference</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="toolfuse.Tool.type">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/toolfuse/base.html#Tool.type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#toolfuse.Tool.type" title="Link to this definition">¶</a></dt>
+<dd><p>Tool type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tool type</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">

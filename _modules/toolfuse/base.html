@@ -472,14 +472,14 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__doc__</span>  <span class="c1"># type: ignore</span></div>
 
 
-<div class="viewcode-block" id="Tool.name">
-<a class="viewcode-back" href="../../api.html#toolfuse.Tool.name">[docs]</a>
+<div class="viewcode-block" id="Tool.type">
+<a class="viewcode-back" href="../../api.html#toolfuse.Tool.type">[docs]</a>
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tool name</span>
+    <span class="k">def</span> <span class="nf">type</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tool type</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            str: Tool name</span>
+<span class="sd">            str: Tool type</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span></div>
 
@@ -497,7 +497,7 @@
             <span class="n">version</span> <span class="o">=</span> <span class="n">pkgversion</span><span class="p">(</span><span class="n">mod_parts</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="k">pass</span>
-        <span class="k">return</span> <span class="n">V1ToolRef</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">(),</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">V1ToolRef</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">(),</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Tool.add_action">
@@ -672,7 +672,7 @@
 <span class="sd">        Methods:</span>
 <span class="sd">            __init__(*args, **kwargs): Initializes the Combined class, the Tool part of the class,</span>
 <span class="sd">                                       and registers methods from the user-defined class as actions.</span>
-<span class="sd">            name(): Returns the name of the class.</span>
+<span class="sd">            type(): Returns the type of the class.</span>
 <span class="sd">            _register_methods_from_cls(): Registers public methods from the user-defined class as actions.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
@@ -692,12 +692,12 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_register_methods_from_cls</span><span class="p">()</span>  <span class="c1"># Register methods from cls as actions</span>
 
         <span class="nd">@classmethod</span>
-        <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">type</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">            Returns the name of the class.</span>
+<span class="sd">            Returns the type of the class.</span>
 
 <span class="sd">            Returns:</span>
-<span class="sd">                str: The name of the class.</span>
+<span class="sd">                str: The type of the class.</span>
 <span class="sd">            &quot;&quot;&quot;</span>
             <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span>
 
