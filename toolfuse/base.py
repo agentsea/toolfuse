@@ -1,11 +1,13 @@
-from abc import ABC
-from typing import List, Callable, Any, Dict, Optional, TypeVar, Type, Union
-from inspect import getdoc, getmodule
 import inspect
 import re
+from abc import ABC
 from importlib.metadata import version as pkgversion
+from inspect import getdoc, getmodule
+from typing import Any, Callable, Dict, List, Optional, Type, TypeVar, Union
 
+from jsonschema import ValidationError, validate
 from toolcore import FunctionWrapper
+
 from .models import V1ToolRef
 
 
@@ -260,6 +262,7 @@ class Tool(ABC):
         Returns:
             Any: The result of the action execution, which can vary depending on the action.
         """
+        self._validate_parameters(action.schema, kwargs)
         return action(*args, **kwargs)
 
     def observe(self, observation: Observation, *args, **kwargs) -> Any:
@@ -274,6 +277,7 @@ class Tool(ABC):
         Returns:
             Any: The result of the observation execution, which can vary depending on the observation.
         """
+        self._validate_parameters(observation.schema, kwargs)
         if not isinstance(observation, Observation):
             raise ValueError(
                 "Actions are not observable. Use the 'use' method to perform an action."
@@ -306,6 +310,24 @@ class Tool(ABC):
                 if observation.name not in exclude_names:
                     out.append(observation.schema)
         return out
+
+    def _validate_parameters(
+        self, schema: Dict[str, Any], parameters: Dict[str, Any]
+    ) -> None:
+        """
+        Validates the provided parameters against the given schema.
+
+        Args:
+            schema (Dict[str, Any]): The schema defining the structure of the parameters.
+            parameters (Dict[str, Any]): The parameters to validate.
+
+        Raises:
+            ValidationError: If the parameters do not conform to the schema.
+        """
+        try:
+            validate(instance=parameters, schema=schema)
+        except ValidationError as e:
+            raise ValueError(f"Parameter validation error: {e.message}")
 
     def find_action(self, name: str) -> Optional[Action]:
         """
