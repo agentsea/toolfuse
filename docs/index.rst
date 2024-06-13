@@ -10,4 +10,4 @@ ToolFuse Library Reference
    :maxdepth: 1
    :caption: ↪
 
-   Go to User Guide <https://agentsea.github.io/toolfuse.html>
+   Go to User Guide <https://docs.hub.agentsea.ai/toolfuse/intro>

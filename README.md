@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <!-- <a href="https://github.com/agentsea/skillpacks">
+  <!-- <a href="https://github.com/agentsea/toolfuse">
     <img src="https://project-logo.png" alt="Logo" width="80">
   </a> -->
 
@@ -10,10 +10,10 @@
   <p align="center">
     A common protocol for AI agent tools
     <br />
-    <a href="https://github.com/agentsea/toolfuse"><strong>Explore the docs »</strong></a>
+    <a href="https://docs.hub.agentsea.ai/toolfuse/intro"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/agentsea/toolfuse">View Demo</a>
+    <a href="https://github.com/agentsea/toolfuse/blob/main/examples/weather/demo.ipynb">View Demo</a>
     ·
     <a href="https://github.com/agentsea/toolfuse/issues">Report Bug</a>
     ·
@@ -198,10 +198,3 @@ weather_tool.add_action(echo)
 :computer: [AgentDesk](https://github.com/agentsea/agentdesk) provides AI agents with a full GUI desktop locally or in the cloud.
 
 :wrench: [AgentUtils](https://github.com/agentsea/toolfuse/blob/main/toolfuse/util.py) provides some basic utilities for agentic tool use
-
-## Roadmap
-
-- [ ] Integrate with langchain
-- [ ] Integrate with babyagi
-- [ ] Integrate with autogen
-- [ ] Integrate with llamaindex
