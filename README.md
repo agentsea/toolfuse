@@ -13,7 +13,7 @@
     <a href="https://docs.hub.agentsea.ai/toolfuse/intro"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/agentsea/toolfuse/blob/main/examples/weather/demo.ipynb">View Demo</a>
+    <a href="https://youtu.be/exoOUUwFRB8">View Demo</a>
     ·
     <a href="https://github.com/agentsea/toolfuse/issues">Report Bug</a>
     ·
