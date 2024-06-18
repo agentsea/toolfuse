@@ -198,3 +198,7 @@ weather_tool.add_action(echo)
 :computer: [AgentDesk](https://github.com/agentsea/agentdesk) provides AI agents with a full GUI desktop locally or in the cloud.
 
 :wrench: [AgentUtils](https://github.com/agentsea/toolfuse/blob/main/toolfuse/util.py) provides some basic utilities for agentic tool use
+
+## Community
+
+Come join us on [Discord](https://discord.gg/hhaq7XYPS6).
